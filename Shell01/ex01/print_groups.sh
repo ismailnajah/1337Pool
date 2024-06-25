@@ -1,2 +1,1 @@
-id -Gn daemon | tr ' ' ',' | tr -d '
-'
+id -Gn $FT_USER | tr ' ' ',' | tr -d '\n'
