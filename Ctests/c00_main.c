@@ -57,6 +57,6 @@ int	main(void)
 	printf("\n%d %d %d %d", min_int, max_int, pos_nb, neg_nb);
 	ft_putchar('\n');
 	ft_putchar('\n');
-	ft_print_combn(6);
+	ft_print_combn(9);
 	return (0);
 }
