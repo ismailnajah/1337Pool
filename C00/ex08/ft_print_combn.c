@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 19:00:50 by inajah            #+#    #+#             */
-/*   Updated: 2024/06/26 22:27:39 by inajah           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:30:23 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -60,7 +60,8 @@ void	ft_print_combn(int n)
 	while (buff[0] <= ('0' + 10 - n))
 	{
 		step_forward(buff, n, &i);
-		i--;
+		if (i > 0)
+			i--;
 		while (buff[i] > '9' - (n - 1 - i) && i > 0)
 			i--;
 		if (i >= 0)

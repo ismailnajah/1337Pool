@@ -11,6 +11,7 @@
 
 int	main(void)
 {
+#if 1
 	//testing ex00
 	char c = 'A';
 	ft_putchar(c);
@@ -54,9 +55,15 @@ int	main(void)
 	ft_putnbr(pos_nb);
 	ft_putchar(' ');
 	ft_putnbr(neg_nb);
-	printf("\n%d %d %d %d", min_int, max_int, pos_nb, neg_nb);
+	//printf("\n%d %d %d %d", min_int, max_int, pos_nb, neg_nb);
 	ft_putchar('\n');
 	ft_putchar('\n');
-	ft_print_combn(9);
+#endif
+	//testing ex08
+	for(int i=1; i<10; i++){
+		printf("------------------- n = %d --------------------\n", i);
+		ft_print_combn(i);
+		printf("\n-----------------------------------------------\n\n");
+	}
 	return (0);
 }
