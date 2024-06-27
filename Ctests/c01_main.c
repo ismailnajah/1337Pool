@@ -75,7 +75,7 @@ int main()
 	//testing ex07
 	//int tab[] = {45, 8, 24, 13, 4, 5, 2, 7, 1, 9, 10};
 	//int tab_size = 11;
-	int tab[] = {35 ,1};
+	int tab[] = {1 , 3};
 	int tab_size = 2;
 	print_tab(tab, tab_size, "       original:");
 	//testing ex08
