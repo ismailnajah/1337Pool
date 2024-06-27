@@ -9,6 +9,7 @@
 #include "../C02/ex04/ft_str_is_lowercase.c"
 #include "../C02/ex05/ft_str_is_uppercase.c"
 #include "../C02/ex06/ft_str_is_printable.c"
+#include "../C02/ex07/ft_strupcase.c"
 
 int main()
 {
@@ -72,6 +73,10 @@ int main()
 	printf("ft_str_is_printable(\"%s\"): %d\n", normal, ft_str_is_printable(normal));	
 	printf("ft_str_is_printable(\"%s\"): %d\n", empty, ft_str_is_printable(empty));	
 	printf("ft_str_is_printable(\"%s\"): %d\n", special, ft_str_is_printable(special));	
+	printf("\n");
+
+	//testing ex07
+	printf("ft_strupcase(\"%s\"): %s\n", lowercase, ft_strupcase(lowercase));
 	printf("\n");
 
 
