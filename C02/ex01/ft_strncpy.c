@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 13:49:57 by inajah            #+#    #+#             */
-/*   Updated: 2024/06/27 14:00:32 by inajah           ###   ########.fr       */
+/*   Created: 2024/06/27 14:01:02 by inajah            #+#    #+#             */
+/*   Updated: 2024/06/27 14:15:59 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (src[i])
+	while (i < n && src[i])
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
+	if (!src[i])
+	{
+		while (i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
+	}
 	return (dest);
 }
