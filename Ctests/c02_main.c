@@ -6,6 +6,8 @@
 #include "../C02/ex01/ft_strncpy.c"
 #include "../C02/ex02/ft_str_is_alpha.c"
 #include "../C02/ex03/ft_str_is_numeric.c"
+#include "../C02/ex04/ft_str_is_lowercase.c"
+#include "../C02/ex05/ft_str_is_uppercase.c"
 
 int main()
 {
@@ -40,7 +42,28 @@ int main()
 	printf("ft_str_is_numeric(\"%s\"): %d\n", withdigits, ft_str_is_numeric(withdigits));
 	printf("ft_str_is_numeric(\"%s\"): %d\n", empty, ft_str_is_numeric(empty));
 	printf("ft_str_is_numeric(\"%s\"): %d\n", onlydigits, ft_str_is_numeric(onlydigits));
+	printf("\n");
+
+
+	//testing ex04
+	char *lowercase = "thisisalowercasestring";
+	char *uppercase = "THISISANUPPERCASESTRING";
+	char *singlelower = "a";
+	char *singleupper = "A";
+	printf("ft_str_is_lowercase(\"%s\"): %d\n", uppercase, ft_str_is_lowercase(uppercase));	
+	printf("ft_str_is_lowercase(\"%s\"): %d\n", lowercase, ft_str_is_lowercase(lowercase));	
+	printf("ft_str_is_lowercase(\"%s\"): %d\n", empty, ft_str_is_lowercase(empty));	
+	printf("ft_str_is_lowercase(\"%s\"): %d\n", singleupper, ft_str_is_lowercase(singleupper));	
+	printf("ft_str_is_lowercase(\"%s\"): %d\n", singlelower, ft_str_is_lowercase(singlelower));	
+	printf("\n");
 	
+	//testing ex05
+	printf("ft_str_is_uppercase(\"%s\"): %d\n", uppercase, ft_str_is_uppercase(uppercase));	
+	printf("ft_str_is_uppercase(\"%s\"): %d\n", lowercase, ft_str_is_uppercase(lowercase));	
+	printf("ft_str_is_uppercase(\"%s\"): %d\n", empty, ft_str_is_uppercase(empty));	
+	printf("ft_str_is_uppercase(\"%s\"): %d\n", singleupper, ft_str_is_uppercase(singleupper));	
+	printf("ft_str_is_uppercase(\"%s\"): %d\n", singlelower, ft_str_is_uppercase(singlelower));	
+	printf("\n");
 
 
 	return 0;
