@@ -1,2 +1,5 @@
-main: c00_main.c
-	gcc -Wall -Wextra -Werror -o main c00_main.c
+main00: c00_main.c
+	gcc -Wall -Wextra -Werror -o main00 c00_main.c
+
+main01: c01_main.c
+	gcc -Wall -Wextra -Werror -o main01 c01_main.c
