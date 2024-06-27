@@ -5,12 +5,20 @@
 #include "../C01/ex01/ft_ultimate_ft.c"
 #include "../C01/ex02/ft_swap.c"
 #include "../C01/ex03/ft_div_mod.c"
-//#include "../C01/ex04/ft_ultimate_div_mod.c"
-//#include "../C01/ex05/ft_putstr.c"
-//#include "../C01/ex06/ft_strlen.c"
-//#include "../C01/ex07/ft_rev_int_tab.c"
-//#include "../C01/ex08/ft_sort_int_tab.c"
+#include "../C01/ex04/ft_ultimate_div_mod.c"
+#include "../C01/ex05/ft_putstr.c"
+#include "../C01/ex06/ft_strlen.c"
+#include "../C01/ex07/ft_rev_int_tab.c"
+#include "../C01/ex08/ft_sort_int_tab.c"
 
+void print_tab(int *tab, int size, char *message)
+{
+	printf("%s tab = {", message);
+	for(int i=0; i<size; i++)
+		printf("%d ", tab[i]);
+	printf("}\n");
+	
+}
 
 int main()
 {
@@ -48,7 +56,31 @@ int main()
 	int div;
 	int mod;
 	ft_div_mod(diva, divb, &div, &mod);
-	printf("ft_div_mod: %d / %d  = %d | mod = %d", diva, divb, div, mod);
+	printf("ft_div_mod: %d / %d  = %d | mod = %d\n\n", diva, divb, div, mod);
+	
+	//testing ex04
+	printf("a=%d , b=%d \n", diva, divb);
+	ft_ultimate_div_mod(&diva, &divb);
+	printf("ft_ultimate_div_mod: a=%d  , b=%d\n\n", diva, divb);
+
+	//testing ex05
+	char *str = "Hello";
+	ft_putstr(str);
+	printf("\n\n");
+
+	//testing ex06
+	int size = ft_strlen(str);
+	printf("ft_strlen: size of \"%s\" is %d\n\n", str, size);	
+
+	//testing ex07
+	int tab[] = {45, 8, 24, 13, 4, 5, 2, 7, 1, 9, 10};
+	int tab_size = 11;
+	print_tab(tab, tab_size, "       original:");
+	ft_rev_int_tab(tab, tab_size);
+	print_tab(tab, tab_size, " ft_rev_int_tab:");
+	//testing ex08
+	ft_sort_int_tab(tab, tab_size);
+	print_tab(tab, tab_size, "ft_sort_int_tab:");
 	
 	
 	return 0;
