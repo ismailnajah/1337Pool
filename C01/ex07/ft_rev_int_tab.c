@@ -6,24 +6,21 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 12:04:58 by inajah            #+#    #+#             */
-/*   Updated: 2024/06/27 12:29:13 by inajah           ###   ########.fr       */
+/*   Updated: 2024/06/27 16:03:35 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_rev_int_tab(int *tab, int size)
 {
-	int	*l;
-	int	*r;
 	int	temp;
+	int	i;
 
-	r = tab;
-	l = tab + size - 1;
-	while (r < l)
+	i = 0;
+	while (i < size / 2)
 	{
-		temp = *r;
-		*r = *l;
-		*l = temp;
-		r++;
-		l--;
+		temp = tab[i];
+		tab[i] = tab[size - 1 - i];
+		tab[size - 1 - i] = temp;
+		i++;
 	}
 }
