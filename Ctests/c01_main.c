@@ -48,7 +48,7 @@ int main()
 	int c = 4242;
 	printf("b=%d, c=%d\n",b,c);
 	ft_swap(&b, &c);
-	printf("ft_swap: b=%d, c=%d", b, c);
+	printf("ft_swap: b=%d, c=%d\n\n", b, c);
 	
 	//testing ex03
 	int diva =  513;
