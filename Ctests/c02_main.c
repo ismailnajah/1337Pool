@@ -8,6 +8,7 @@
 #include "../C02/ex03/ft_str_is_numeric.c"
 #include "../C02/ex04/ft_str_is_lowercase.c"
 #include "../C02/ex05/ft_str_is_uppercase.c"
+#include "../C02/ex06/ft_str_is_printable.c"
 
 int main()
 {
@@ -63,6 +64,14 @@ int main()
 	printf("ft_str_is_uppercase(\"%s\"): %d\n", empty, ft_str_is_uppercase(empty));	
 	printf("ft_str_is_uppercase(\"%s\"): %d\n", singleupper, ft_str_is_uppercase(singleupper));	
 	printf("ft_str_is_uppercase(\"%s\"): %d\n", singlelower, ft_str_is_uppercase(singlelower));	
+	printf("\n");
+
+	//testing ex06
+	char *normal = "This is @ normal $ string 123342 )(^&*$|\\";
+	char *special = "hello\n"; 
+	printf("ft_str_is_printable(\"%s\"): %d\n", normal, ft_str_is_printable(normal));	
+	printf("ft_str_is_printable(\"%s\"): %d\n", empty, ft_str_is_printable(empty));	
+	printf("ft_str_is_printable(\"%s\"): %d\n", special, ft_str_is_printable(special));	
 	printf("\n");
 
 
