@@ -96,6 +96,15 @@ int main()
 	printf("%s\n", ft_strcapitalize(capitalize));
 	printf("\n");
 
+	//testing ex10
+	char src2[] = "testing strlcpy";
+	char dest_strlcpy1[16];
+	//char dest_strlcpy2[16];
+	printf("original strlcpy : %s  -> len(src2) = %ld\n", dest_strlcpy1, strlcpy(dest_strlcpy1, src2, 16));
+	//printf("  our ft_strcpy : %s\n", ft_strlcpy(dest_strlcpy2, src));
+	printf("\n");
+
+
 
 	return 0;
 }
