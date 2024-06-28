@@ -13,8 +13,9 @@
 
 int main()
 {
+
 	//testing ex00
-	char *src = "Hello, Poolers";
+	char src[] = "Hello, Poolers";
 	char dest01[16];
 	char dest02[16];
 	printf("original strcpy : %s\n", strcpy(dest01, src));
@@ -29,18 +30,18 @@ int main()
 	printf("\n");
 
 	//testing ex02
-	char *nodigits = "this string has no digits.";
-	char *withdigits = "this string has 4 digits. 1337";
-	char *empty = "";
-	char *onlydigits = "4324345553222";
-	printf("ft_str_is_alpha(\"%s\"): %d\n", nodigits, ft_str_is_alpha(nodigits));
+	char onlyalpha[] = "thisStringHasOnlyAlphabets";
+	char withdigits[] = "this string has 4 digits. 1337";
+	char empty[] = "";
+	char onlydigits[] = "4324345553222";
+	printf("ft_str_is_alpha(\"%s\"): %d\n", onlyalpha, ft_str_is_alpha(onlyalpha));
 	printf("ft_str_is_alpha(\"%s\"): %d\n", withdigits, ft_str_is_alpha(withdigits));
 	printf("ft_str_is_alpha(\"%s\"): %d\n", empty, ft_str_is_alpha(empty));
 	printf("ft_str_is_alpha(\"%s\"): %d\n", onlydigits, ft_str_is_alpha(onlydigits));
 	printf("\n");
 
 	//testing ex03
-	printf("ft_str_is_numeric(\"%s\"): %d\n", nodigits, ft_str_is_numeric(nodigits));
+	printf("ft_str_is_numeric(\"%s\"): %d\n", onlyalpha, ft_str_is_numeric(onlyalpha));
 	printf("ft_str_is_numeric(\"%s\"): %d\n", withdigits, ft_str_is_numeric(withdigits));
 	printf("ft_str_is_numeric(\"%s\"): %d\n", empty, ft_str_is_numeric(empty));
 	printf("ft_str_is_numeric(\"%s\"): %d\n", onlydigits, ft_str_is_numeric(onlydigits));
@@ -48,10 +49,10 @@ int main()
 
 
 	//testing ex04
-	char *lowercase = "thisisalowercasestring";
-	char *uppercase = "THISISANUPPERCASESTRING";
-	char *singlelower = "a";
-	char *singleupper = "A";
+	char lowercase[] = "thisisalowercasestring";
+	char uppercase[] = "THISISANUPPERCASESTRING";
+	char singlelower[] = "a";
+	char singleupper[] = "A";
 	printf("ft_str_is_lowercase(\"%s\"): %d\n", uppercase, ft_str_is_lowercase(uppercase));	
 	printf("ft_str_is_lowercase(\"%s\"): %d\n", lowercase, ft_str_is_lowercase(lowercase));	
 	printf("ft_str_is_lowercase(\"%s\"): %d\n", empty, ft_str_is_lowercase(empty));	
@@ -68,15 +69,17 @@ int main()
 	printf("\n");
 
 	//testing ex06
-	char *normal = "This is @ normal $ string 123342 )(^&*$|\\";
-	char *special = "hello\n"; 
+	char normal[] = "This is @ normal $ string 123342 )(^&*$|\\";
+	char special[] = "hello\n"; 
 	printf("ft_str_is_printable(\"%s\"): %d\n", normal, ft_str_is_printable(normal));	
 	printf("ft_str_is_printable(\"%s\"): %d\n", empty, ft_str_is_printable(empty));	
 	printf("ft_str_is_printable(\"%s\"): %d\n", special, ft_str_is_printable(special));	
 	printf("\n");
 
 	//testing ex07
-	printf("ft_strupcase(\"%s\"): %s\n", lowercase, ft_strupcase(lowercase));
+	char test[] = "this is a test";
+	printf("ft_strupcase(\"%s\"): ", test);
+	printf("%s\n", ft_strupcase(test));
 	printf("\n");
 
 
