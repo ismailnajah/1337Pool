@@ -10,6 +10,8 @@
 #include "../C02/ex05/ft_str_is_uppercase.c"
 #include "../C02/ex06/ft_str_is_printable.c"
 #include "../C02/ex07/ft_strupcase.c"
+#include "../C02/ex08/ft_strlowcase.c"
+#include "../C02/ex09/ft_strcapitalize.c"
 
 int main()
 {
@@ -80,6 +82,18 @@ int main()
 	char test[] = "this is a test";
 	printf("ft_strupcase(\"%s\"): ", test);
 	printf("%s\n", ft_strupcase(test));
+	printf("\n");
+
+	//testing ex08
+	// test is now all upper case
+	printf("ft_strlowcase(\"%s\"): ", test);
+	printf("%s\n", ft_strlowcase(test));
+	printf("\n");
+
+	//testing ex09
+	char capitalize[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+	printf("ft_strcapitalize(\"%s\"): ", capitalize);
+	printf("%s\n", ft_strcapitalize(capitalize));
 	printf("\n");
 
 

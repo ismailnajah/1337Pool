@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 17:53:37 by inajah            #+#    #+#             */
-/*   Updated: 2024/06/28 10:13:19 by inajah           ###   ########.fr       */
+/*   Created: 2024/06/28 10:10:14 by inajah            #+#    #+#             */
+/*   Updated: 2024/06/28 10:15:03 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+char	*ft_strlowcase(char *str)
 {
 	unsigned int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (!('a' <= str[i] && str[i] <= 'z'))
-			return (0);
-		if (!('A' <= str[i] && str[i] <= 'Z'))
-			return (0);
+		if ('A' <= str[i] && str[i] <= 'Z')
+			str[i] = 'a' + (str[i] - 'A');
 		i++;
 	}
-	return (1);
+	return (str);
 }
