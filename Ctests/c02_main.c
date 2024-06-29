@@ -23,7 +23,7 @@ void header(int nb){
 
 int main()
 {
-#if 0
+#if 1 
 	//testing ex00
 	char src[] = "Hello, Poolers";
 	char dest01[16];
@@ -127,7 +127,7 @@ int main()
 	printf("  ft_strlcpy(%s) : %d\n", src_strlcpy, ft_strlcpy(dest_strlcpy2, src_strlcpy, dest_size));
 	printf("			- dest_strlpy2 = %s\n", dest_strlcpy2);
 	printf("\n");
-#endif
+
 	//testing ex11
 	//header(11);
 	char ex11_str[] = "Coucou\ntu vas\t bien \v %*$#@^&242745? \r";
@@ -141,6 +141,8 @@ int main()
 	char memory[] = "Bonjour les aminches\t\n\tc. est fou\ttout\tce qu on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";
 	unsigned int memory_size = 92;
 	ft_print_memory((void*) memory, memory_size);
+#endif
+
 	return 0;
 
 }
