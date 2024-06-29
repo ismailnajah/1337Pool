@@ -14,6 +14,7 @@
 #include "../C02/ex09/ft_strcapitalize.c"
 #include "../C02/ex10/ft_strlcpy.c"
 #include "../C02/ex11/ft_putstr_non_printable.c"
+#include "../C02/ex12/ft_print_memory.c"
 
 int main()
 {
