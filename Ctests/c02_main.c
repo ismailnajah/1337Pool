@@ -17,11 +17,13 @@
 #include "../C02/ex12/ft_print_memory.c"
 
 void header(int nb){
-	printf("----------------- Testing : ex%02d -----------------------\n", nb);
+	(void)nb;
+//	printf("----------------- Testing : ex%02d -----------------------\n", nb);
 }
 
 int main()
 {
+#if 0
 	//testing ex00
 	char src[] = "Hello, Poolers";
 	char dest01[16];
@@ -39,6 +41,7 @@ int main()
 	printf("  our ft_strncpy : %s\n", ft_strncpy(dest12, src, 5));
 	printf("\n");
 
+
 	//testing ex02
 	char onlyalpha[] = "thisStringHasOnlyAlphabets";
 	char withdigits[] = "this string has 4 digits. 1337";
@@ -49,7 +52,7 @@ int main()
 	printf("ft_str_is_alpha(\"%s\"): %d\n", withdigits, ft_str_is_alpha(withdigits));
 	printf("ft_str_is_alpha(\"%s\"): %d\n", empty, ft_str_is_alpha(empty));
 	printf("ft_str_is_alpha(\"%s\"): %d\n", onlydigits, ft_str_is_alpha(onlydigits));
-	printf("\n");
+	//printf("\n");
 
 	//testing ex03
 	header(3);
@@ -104,14 +107,14 @@ int main()
 	printf("ft_strlowcase(\"%s\"): ", test);
 	printf("%s\n", ft_strlowcase(test));
 	printf("\n");
-
+#endif
 	//testing ex09
 	header(9);
 	char capitalize[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
 	printf("ft_strcapitalize(\"%s\"): ", capitalize);
 	printf("%s\n", ft_strcapitalize(capitalize));
 	printf("\n");
-
+#if 0
 	//testing ex10
 	header(10);
 	char src_strlcpy[] = "hello";
@@ -125,18 +128,18 @@ int main()
 	printf("			- dest_strlpy2 = %s\n", dest_strlcpy2);
 	printf("\n");
 
-
 	//testing ex11
-	header(11);
+	//header(11);
 	char ex11_str[] = "Coucou\ntu vas\t bien \v %*$#@^&242745? \r";
 	ft_putstr_non_printable(ex11_str);
-	printf("\n\n");
+	write(1, "\n\n", 2);
 
 
 	//testing ex12
-	header(12);
+	//header(12);
 	char memory[] = "Bonjour les aminches\t\n\tc. est fou\ttout\tce qu on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";
 	unsigned int memory_size = 92;
 	ft_print_memory((void*) memory, memory_size);
 	return 0;
+#endif
 }
