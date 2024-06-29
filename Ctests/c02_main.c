@@ -107,14 +107,14 @@ int main()
 	printf("ft_strlowcase(\"%s\"): ", test);
 	printf("%s\n", ft_strlowcase(test));
 	printf("\n");
-#endif
+
 	//testing ex09
 	header(9);
 	char capitalize[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
 	printf("ft_strcapitalize(\"%s\"): ", capitalize);
 	printf("%s\n", ft_strcapitalize(capitalize));
 	printf("\n");
-#if 0
+
 	//testing ex10
 	header(10);
 	char src_strlcpy[] = "hello";
@@ -127,10 +127,11 @@ int main()
 	printf("  ft_strlcpy(%s) : %d\n", src_strlcpy, ft_strlcpy(dest_strlcpy2, src_strlcpy, dest_size));
 	printf("			- dest_strlpy2 = %s\n", dest_strlcpy2);
 	printf("\n");
-
+#endif
 	//testing ex11
 	//header(11);
 	char ex11_str[] = "Coucou\ntu vas\t bien \v %*$#@^&242745? \r";
+	//char ex11_str[] = "000000010a161f90: 0a09 6c6f 6c2e 6c6f 6c0a 2000 ..lol.lol. .";
 	ft_putstr_non_printable(ex11_str);
 	write(1, "\n\n", 2);
 
@@ -141,5 +142,5 @@ int main()
 	unsigned int memory_size = 92;
 	ft_print_memory((void*) memory, memory_size);
 	return 0;
-#endif
+
 }

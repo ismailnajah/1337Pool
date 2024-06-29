@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 09:03:45 by inajah            #+#    #+#             */
-/*   Updated: 2024/06/29 17:37:45 by inajah           ###   ########.fr       */
+/*   Updated: 2024/06/29 18:44:26 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -47,5 +47,4 @@ void	ft_putstr_non_printable(char *str)
 		}
 		i++;
 	}
-	write(1, "\n", 1);
 }

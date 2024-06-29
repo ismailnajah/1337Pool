@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 09:48:47 by inajah            #+#    #+#             */
-/*   Updated: 2024/06/29 17:40:25 by inajah           ###   ########.fr       */
+/*   Updated: 2024/06/29 19:02:12 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -97,7 +97,6 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		if (size - i < 16)
 			print_size = size - i;
 		print_str_as_hex((unsigned char *) addr + i, print_size);
-		write(1, " ", 1);
 		print_str_non_printable((unsigned char *) addr + i, print_size);
 		write(1, "\n", 1);
 		i += 16;
