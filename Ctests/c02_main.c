@@ -12,6 +12,7 @@
 #include "../C02/ex07/ft_strupcase.c"
 #include "../C02/ex08/ft_strlowcase.c"
 #include "../C02/ex09/ft_strcapitalize.c"
+#include "../C02/ex10/ft_strlcpy.c"
 
 int main()
 {
@@ -97,11 +98,15 @@ int main()
 	printf("\n");
 
 	//testing ex10
-	char src2[] = "testing strlcpy";
-	char dest_strlcpy1[16];
-	//char dest_strlcpy2[16];
-	printf("original strlcpy : %s  -> len(src2) = %ld\n", dest_strlcpy1, strlcpy(dest_strlcpy1, src2, 16));
-	//printf("  our ft_strcpy : %s\n", ft_strlcpy(dest_strlcpy2, src));
+	char src_strlcpy[] = "hello";
+	unsigned int dest_size = 2;
+	char dest_strlcpy1[dest_size];
+	char dest_strlcpy2[dest_size];
+	printf("     strlcpy(%s) : %lu\n", src_strlcpy, strlcpy(dest_strlcpy1, src_strlcpy, dest_size));
+	printf("			- dest_strlpy1 = %s\n", dest_strlcpy1);
+
+	printf("  ft_strlcpy(%s) : %d\n", src_strlcpy, ft_strlcpy(dest_strlcpy2, src_strlcpy, dest_size));
+	printf("			- dest_strlpy2 = %s\n", dest_strlcpy2);
 	printf("\n");
 
 
