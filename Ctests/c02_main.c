@@ -17,7 +17,7 @@
 
 int main()
 {
-
+#if 0
 	//testing ex00
 	char src[] = "Hello, Poolers";
 	char dest01[16];
@@ -114,7 +114,10 @@ int main()
 	char ex11_str[] = "Coucou\ntu vas\t bien \v %*$#@^&242745? \r";
 	ft_putstr_non_printable(ex11_str);
 
+#endif
 
-
+	char memory[] = "Bonjour les ami ches\t\nc. est fou\ttout\tce qu on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";
+	unsigned int memory_size = 50;
+	ft_print_memory((void*) memory, memory_size);
 	return 0;
 }
