@@ -13,6 +13,7 @@
 #include "../C02/ex08/ft_strlowcase.c"
 #include "../C02/ex09/ft_strcapitalize.c"
 #include "../C02/ex10/ft_strlcpy.c"
+#include "../C02/ex11/ft_putstr_non_printable.c"
 
 int main()
 {
@@ -98,7 +99,7 @@ int main()
 	printf("\n");
 
 	//testing ex10
-	char src_strlcpy[] = "hello";
+	char src_strlcpy[] = "h";
 	unsigned int dest_size = 2;
 	char dest_strlcpy1[dest_size];
 	char dest_strlcpy2[dest_size];
@@ -108,6 +109,10 @@ int main()
 	printf("  ft_strlcpy(%s) : %d\n", src_strlcpy, ft_strlcpy(dest_strlcpy2, src_strlcpy, dest_size));
 	printf("			- dest_strlpy2 = %s\n", dest_strlcpy2);
 	printf("\n");
+
+	//testing ex11
+	char ex11_str[] = "Coucou\ntu vas\t bien \v %*$#@^&242745? \r";
+	ft_putstr_non_printable(ex11_str);
 
 
 
