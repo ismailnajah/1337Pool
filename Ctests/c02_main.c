@@ -16,12 +16,17 @@
 #include "../C02/ex11/ft_putstr_non_printable.c"
 #include "../C02/ex12/ft_print_memory.c"
 
+void header(int nb){
+	printf("----------------- Testing : ex%02d -----------------------\n", nb);
+}
+
 int main()
 {
 	//testing ex00
 	char src[] = "Hello, Poolers";
 	char dest01[16];
 	char dest02[16];
+	header(0);
 	printf("original strcpy : %s\n", strcpy(dest01, src));
 	printf("  our ft_strcpy : %s\n", ft_strcpy(dest02, src));
 	printf("\n");
@@ -29,6 +34,7 @@ int main()
 	//testing ex01
 	char dest11[16];
 	char dest12[16];
+	header(1);
 	printf("original strncpy : %s\n", strncpy(dest11, src, 5));
 	printf("  our ft_strncpy : %s\n", ft_strncpy(dest12, src, 5));
 	printf("\n");
@@ -38,6 +44,7 @@ int main()
 	char withdigits[] = "this string has 4 digits. 1337";
 	char empty[] = "";
 	char onlydigits[] = "4324345553222";
+	header(2);
 	printf("ft_str_is_alpha(\"%s\"): %d\n", onlyalpha, ft_str_is_alpha(onlyalpha));
 	printf("ft_str_is_alpha(\"%s\"): %d\n", withdigits, ft_str_is_alpha(withdigits));
 	printf("ft_str_is_alpha(\"%s\"): %d\n", empty, ft_str_is_alpha(empty));
@@ -45,6 +52,7 @@ int main()
 	printf("\n");
 
 	//testing ex03
+	header(3);
 	printf("ft_str_is_numeric(\"%s\"): %d\n", onlyalpha, ft_str_is_numeric(onlyalpha));
 	printf("ft_str_is_numeric(\"%s\"): %d\n", withdigits, ft_str_is_numeric(withdigits));
 	printf("ft_str_is_numeric(\"%s\"): %d\n", empty, ft_str_is_numeric(empty));
@@ -53,6 +61,7 @@ int main()
 
 
 	//testing ex04
+	header(4);
 	char lowercase[] = "thisisalowercasestring";
 	char uppercase[] = "THISISANUPPERCASESTRING";
 	char singlelower[] = "a";
@@ -65,6 +74,7 @@ int main()
 	printf("\n");
 	
 	//testing ex05
+	header(5);
 	printf("ft_str_is_uppercase(\"%s\"): %d\n", uppercase, ft_str_is_uppercase(uppercase));	
 	printf("ft_str_is_uppercase(\"%s\"): %d\n", lowercase, ft_str_is_uppercase(lowercase));	
 	printf("ft_str_is_uppercase(\"%s\"): %d\n", empty, ft_str_is_uppercase(empty));	
@@ -73,6 +83,7 @@ int main()
 	printf("\n");
 
 	//testing ex06
+	header(6);
 	char normal[] = "This is @ normal $ string 123342 )(^&*$|\\";
 	char special[] = "hello\n"; 
 	printf("ft_str_is_printable(\"%s\"): %d\n", normal, ft_str_is_printable(normal));	
@@ -81,26 +92,30 @@ int main()
 	printf("\n");
 
 	//testing ex07
+	header(7);
 	char test[] = "this is a test";
 	printf("ft_strupcase(\"%s\"): ", test);
 	printf("%s\n", ft_strupcase(test));
 	printf("\n");
 
 	//testing ex08
+	header(8);
 	// test is now all upper case
 	printf("ft_strlowcase(\"%s\"): ", test);
 	printf("%s\n", ft_strlowcase(test));
 	printf("\n");
 
 	//testing ex09
+	header(9);
 	char capitalize[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
 	printf("ft_strcapitalize(\"%s\"): ", capitalize);
 	printf("%s\n", ft_strcapitalize(capitalize));
 	printf("\n");
 
 	//testing ex10
-	char src_strlcpy[] = "h";
-	unsigned int dest_size = 2;
+	header(10);
+	char src_strlcpy[] = "hello";
+	unsigned int dest_size = 10;
 	char dest_strlcpy1[dest_size];
 	char dest_strlcpy2[dest_size];
 	printf("     strlcpy(%s) : %lu\n", src_strlcpy, strlcpy(dest_strlcpy1, src_strlcpy, dest_size));
@@ -110,11 +125,16 @@ int main()
 	printf("			- dest_strlpy2 = %s\n", dest_strlcpy2);
 	printf("\n");
 
+
 	//testing ex11
+	header(11);
 	char ex11_str[] = "Coucou\ntu vas\t bien \v %*$#@^&242745? \r";
 	ft_putstr_non_printable(ex11_str);
+	printf("\n\n");
 
 
+	//testing ex12
+	header(12);
 	char memory[] = "Bonjour les aminches\t\n\tc. est fou\ttout\tce qu on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";
 	unsigned int memory_size = 92;
 	ft_print_memory((void*) memory, memory_size);
