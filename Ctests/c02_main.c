@@ -117,8 +117,8 @@ int main()
 
 #endif
 
-	char memory[] = "Bonjour les ami ches\t\nc. est fou\ttout\tce qu on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";
-	unsigned int memory_size = 50;
+	char memory[] = "Bonjour les aminches\t\n\tc. est fou\ttout\tce qu on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";
+	unsigned int memory_size = 200;
 	ft_print_memory((void*) memory, memory_size);
 	return 0;
 }
