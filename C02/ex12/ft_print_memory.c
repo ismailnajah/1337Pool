@@ -6,11 +6,10 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 09:48:47 by inajah            #+#    #+#             */
-/*   Updated: 2024/06/29 15:52:37 by inajah           ###   ########.fr       */
+/*   Updated: 2024/06/29 16:03:45 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-#include <stdio.h>
 
 void	encode_long_as_hex_buff(long long n, char *buffer, unsigned int *index)
 {
