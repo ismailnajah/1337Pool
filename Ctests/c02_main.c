@@ -14,7 +14,7 @@
 #include "../C02/ex09/ft_strcapitalize.c"
 #include "../C02/ex10/ft_strlcpy.c"
 #include "../C02/ex11/ft_putstr_non_printable.c"
-//#include "../C02/ex12/ft_print_memory.c"
+#include "../C02/ex12/ft_print_memory.c"
 
 void header(char *str){
 	write(1, str, strlen(str));
@@ -22,7 +22,7 @@ void header(char *str){
 
 int main()
 {
-#if 1
+#if 0
 	//testing ex00
 	char src[] = "Hello, Poolers";
 	char dest01[16];
@@ -111,28 +111,25 @@ int main()
 	printf("ft_strcapitalize(\"%s\"): ", capitalize);
 	printf("%s\n", ft_strcapitalize(capitalize));
 	printf("\n");
-
+#endif
 	//testing ex10	
 	header("------------------- Testing ex10 ------------------------\n");
-	char src_strlcpy[] = "hello";
-	unsigned int dest_size = 10;
+	char src_strlcpy[] = "ilias elmahi";
+	unsigned int dest_size = 6;
 	char dest_strlcpy1[dest_size];
-	char dest_strlcpy2[dest_size];
+	char dest_strlcpy2[0];
 	printf("     strlcpy(%s) : %lu\n", src_strlcpy, strlcpy(dest_strlcpy1, src_strlcpy, dest_size));
 	printf("			- dest_strlpy1 = %s\n", dest_strlcpy1);
 
 	printf("  ft_strlcpy(%s) : %d\n", src_strlcpy, ft_strlcpy(dest_strlcpy2, src_strlcpy, dest_size));
 	printf("			- dest_strlpy2 = %s\n", dest_strlcpy2);
 	printf("\n");
-
+#if 0
 	//testing ex11	
 	header("------------------- Testing ex11 ------------------------\n");
-	//char ex11_str[] = "Coucou\ntu vas\t bien \v %*$#@^&242745? \r";
+	char ex11_str[] = "Coucou\ntu vas\t bien \v %*$#@^&242745? \r";
 	
-	//ft_putstr_non_printable(ex11_str);
-	for (int i=0; i<=255; i++)
-			nonprint(i);
-
+	ft_putstr_non_printable(ex11_str);
 	write(1, "\n\n", 2);
 
 #endif
