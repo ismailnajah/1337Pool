@@ -6,7 +6,7 @@
 /*   By: aaferyad <aaferyad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 13:36:52 by aaferyad          #+#    #+#             */
-/*   Updated: 2024/06/30 09:03:09 by inajah           ###   ########.fr       */
+/*   Updated: 2024/06/30 09:17:51 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_atoi(char *s)
 
 void	ft_putstr(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -64,13 +64,19 @@ int	ft_valid_arguments(int width, int height, char *program_name)
 		ft_putstr(program_name);
 		ft_putstr(":");
 		if (width <= 0)
-			ft_putstr("\tinvalid width  --- width  must be greater than 0 ---\n");
+		{
+			ft_putstr("\tinvalid width  --- ");
+			ft_putstr("width  must be greater than 0 ---\n");
+		}
 		if (height <= 0)
-			ft_putstr("\tinvalid height --- height must be greater than 0 ---\n");
+		{
+			ft_putstr("\tinvalid height --- ");
+			ft_putstr("height must be greater than 0 ---\n");
+		}
 		ft_usage(program_name);
-		return 0;
+		return (0);
 	}
-	return 1;
+	return (1);
 }
 
 int	main(int argc, char *argv[])
@@ -86,12 +92,12 @@ int	main(int argc, char *argv[])
 		else
 			ft_putstr(": too many arguments\n");
 		ft_usage(argv[0]);
-		return 1;
+		return (1);
 	}
 	width = ft_atoi(argv[0]);
 	height = ft_atoi(argv[1]);
 	if (!ft_valid_arguments(width, height, argv[0]))
-		return 1;
+		return (1);
 	rush(width, height);
 	return (0);
 }
