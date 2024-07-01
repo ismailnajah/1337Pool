@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 08:38:19 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/01 12:29:54 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/01 18:09:17 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	else
 	{
 		ft_copy(dest + dest_len, src, size - dest_len - 1);
-		dest[dest_len + size] = '\0';
+		dest[size - 1] = '\0';
 	}
 	return (dest_len + src_len);
 }
