@@ -47,10 +47,10 @@ int main()
 
 #endif
 #if 1
-	char lcat_s1[50] = "hello world";
-	char lcat_z1[50] = "hello world";
-	char lcat_src[]= "best";
-	int dest_size = 3; 
+	char lcat_s1[7] = "hello";
+	char lcat_z1[7] = "hello";
+	char lcat_src[]= "this is a test";
+	int dest_size = sizeof(lcat_s1); 
 	printf("\tstrlcat(\"%s\", \"%s\", %d) : ",lcat_s1, lcat_src, dest_size);
 	int result = strlcat(lcat_s1, lcat_src, dest_size); 
 	printf("%s ->  %d\n", lcat_s1, result);
