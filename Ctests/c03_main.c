@@ -5,6 +5,7 @@
 #include "../C03/ex01/ft_strncmp.c"
 #include "../C03/ex02/ft_strcat.c"
 #include "../C03/ex03/ft_strncat.c"
+#include "../C03/ex04/ft_strstr.c"
 
 int main()
 {
@@ -34,6 +35,12 @@ int main()
 	printf("\tstrcat(\"%s\", \"%s\") : %s\n", cat_s1, cat_src, strncat(cat_s1, cat_src, nb));
 	printf("\tft_strcmp(\"%s\", \"%s\") : %s\n", cat_z1, cat_src, ft_strncat(cat_z1, cat_src, nb));
 	printf("\n");
+
+	char haystack[] = "this is heystack string";
+	char needle[] = "tack";
+	printf("\tstrstr(\"%s\", \"%s\") : %s\n", haystack, needle, strstr(haystack, needle));
+	printf("\tft_strstr(\"%s\", \"%s\") : %s\n", haystack, needle, ft_strstr(haystack, needle));
+	
 	
 #endif
 	return 0;
