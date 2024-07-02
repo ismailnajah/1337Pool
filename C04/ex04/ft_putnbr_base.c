@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:35:11 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/02 10:59:00 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/02 13:31:59 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -15,20 +15,22 @@ int	ft_isvalid_base(char *base)
 {
 	unsigned int	i;
 	unsigned int	j;
-	
+
 	i = 0;
-	while (base[i]){
+	while (base[i])
+	{
 		if (base[i] == '-' || base[i] == '+')
-			return 0;
+			return (0);
 		j = i + 1;
-		while(base[j]){
+		while (base[j])
+		{
 			if (base[i] == base[j])
-				return 0;
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (i);//base size
+	return (i);
 }
 
 void	_ft_putnbr_base(long long nbr, char *base_symboles, int base_size)
@@ -53,6 +55,6 @@ void	ft_putnbr_base(int nbr, char *base)
 
 	base_size = ft_isvalid_base(base);
 	if (base_size <= 1)
-		return;
+		return ;
 	_ft_putnbr_base(nbr, base, base_size);
 }

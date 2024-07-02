@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:26:16 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/02 12:02:37 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/02 13:34:36 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@ int	ft_isvalid_base(char *base)
 {
 	unsigned int	i;
 	unsigned int	j;
-	
+
 	i = 0;
-	while (base[i]){
+	while (base[i])
+	{
 		if (base[i] == '-' || base[i] == '+')
-			return 0;
+			return (0);
 		j = i + 1;
-		while(base[j]){
+		while (base[j])
+		{
 			if (base[i] == base[j])
-				return 0;
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (i);//base size
+	return (i);
 }
 
 int	ft_inbase(char c, char *base)
@@ -38,23 +40,48 @@ int	ft_inbase(char c, char *base)
 	while (base[i])
 	{
 		if (base[i] == c)
-			return i;
+			return (i);
 		i++;
 	}
 	return (-1);
 }
 
-long long _ft_atoi_base(char *str, char *base_symboles, unsigned int size)
+long long	ft_power(int x, int n)
 {
+	if (n == 0)
+		return (1);
+	return (x * ft_power(x, n - 1));
+}
 
+long long	_ft_atoi_base(char *str, char *base_symboles, unsigned int size)
+{
+	long long		number;
+	unsigned int	base;
+	unsigned int	digit;
+	int				i;
+
+	base = 0;
+	while (base_symboles[base])
+		base++;
+	i = size - 1;
+	number = 0;
+	while (i >= 0)
+	{
+		digit = ft_inbase(str[i], base_symboles);
+		number += digit * ft_power(base, size - i - 1);
+		i--;
+	}
+	return (number);
 }
 
 int	ft_atoi_base(char *str, char *base)
 {
 	unsigned int	base_size;
 	unsigned int	i;
+	int				start;
 	int				sign;
 
+	sign = 1;
 	base_size = ft_isvalid_base(base);
 	if (base_size <= 1)
 		return (0);
@@ -68,8 +95,7 @@ int	ft_atoi_base(char *str, char *base)
 		i++;
 	}
 	start = i;
-	while (str[i] && ft_inbase(str[i]) > 0)
+	while (str[i] && ft_inbase(str[i], base) >= 0)
 		i++;
-	end = i;
-	return (_ft_atoi_base(str + start, base, end - start, base_size) * sign);
+	return (_ft_atoi_base(str + start, base, i - start) * sign);
 }
