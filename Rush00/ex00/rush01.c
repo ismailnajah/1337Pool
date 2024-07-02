@@ -6,7 +6,7 @@
 /*   By: soabboub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 14:35:38 by soabboub          #+#    #+#             */
-/*   Updated: 2024/06/30 16:46:02 by soabboub         ###   ########.fr       */
+/*   Updated: 2024/07/02 22:31:12 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 void	ft_putchar(char c);
@@ -61,10 +61,10 @@ void	ft_rush(int columns, int rows)
 	}
 }
 
-int	rush(int columns, int rows)
+int	rush(int x, int y)
 {
-	if (columns <= 0 || rows <= 0)
+	if (x <= 0 || y <= 0)
 		return (0);
-	ft_rush(columns, rows);
+	ft_rush(x, y);
 	return (1);
 }
