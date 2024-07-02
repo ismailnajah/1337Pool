@@ -6,6 +6,7 @@
 #include "../C04/ex01/ft_putstr.c"
 #include "../C04/ex02/ft_putnbr.c"
 #include "ft_atoi_test.c"
+#include "ft_putnbr_base_test.c"
 
 #define NL write(1, "\n", 1)
 
@@ -27,6 +28,8 @@ int main()
 	NL;
 	ft_atoi_run_tests();
 
-
+	//testing ex04
+	ft_putstr("\n Testing ft_putnbr_base\n");
+	ft_putnbr_base_run_tests();
 	return 0;
 }
