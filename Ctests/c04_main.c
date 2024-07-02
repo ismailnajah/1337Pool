@@ -2,7 +2,7 @@
 #include <string.h>
 #include <limits.h>
 
-#define ON 0
+#define ON 1
 
 #include "../C04/ex00/ft_strlen.c"
 #include "../C04/ex01/ft_putstr.c"
@@ -12,7 +12,7 @@
 #include "ft_putnbr_base_test.c"
 #endif
 
-#include "../C04/ex05/ft_atoi_base.c"
+//#include "../C04/ex05/ft_atoi_base.c"
 
 #define NL write(1, "\n", 1)
 
@@ -39,9 +39,11 @@ int main()
 	ft_putstr("\n Testing ft_putnbr_base\n");
 	ft_putnbr_base_run_tests();
 #endif
+#if 0
 	char *base = "01";
 	char *str = "101010";
 	int n = ft_atoi_base(str, base);
 	printf("%d\n", n);
+#endif
 	return 0;
 }
