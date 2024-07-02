@@ -5,6 +5,7 @@
 #include "../C04/ex00/ft_strlen.c"
 #include "../C04/ex01/ft_putstr.c"
 #include "../C04/ex02/ft_putnbr.c"
+#include "ft_atoi_test.c"
 
 #define NL write(1, "\n", 1)
 
@@ -22,6 +23,10 @@ int main()
 	ft_putnbr(4242);
 	NL;
 	ft_putnbr(0);
+
+	NL;
+	ft_atoi_run_tests();
+
 
 	return 0;
 }
