@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:10:00 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/03 11:19:56 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/03 12:03:28 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -31,56 +31,72 @@ int	ft_is_valid_position(int *state, int c_r, int c_c)
 	return (1);
 }
 
-void ft_print_solution(int *solution)
+void	ft_print_solution(int *solution)
 {
 	int	i;
 
 	i = 0;
-	while(i < BOARD_SIZE)
+	while (i < BOARD_SIZE)
 	{
 		write(1, &"0123456789"[solution[i]], 1);
 		i++;
 	}
+	write(1, "\n", 1);
+	return (1);
 }
 
-int _ft_ten_queens_puzzle(int *state, int queen_index)
+int	_ft_ten_queens_puzzle(int *state, int queen_index)
 {
-	if(state[0] == BOARD_SIZE)
+	int	nb;
+
+	nb = 0;
+	if (state[0] == BOARD_SIZE)
 		return (0);
-	if (state[queen_index] == BOARD_SIZE )
+	if (state[queen_index] == BOARD_SIZE)
 	{
 		state[queen_index] = 0;
-		state[queen_index - 1 ]++;
-		return _ft_ten_queens_puzzle(state, queen_index - 1);
+		state[queen_index - 1]++;
+		return (_ft_ten_queens_puzzle(state, queen_index - 1));
 	}
 	if (ft_is_valid_position(state, queen_index, state[queen_index]))
 	{
 		if (queen_index == BOARD_SIZE - 1)
 		{
 			ft_print_solution(state);
-			write(1, "\n", 1);
-			return (1);
+			state[queen_index]++;
+			return 1 + _ft_ten_queens_puzzle(state, queen_index);
 		}
 		else
-			return _ft_ten_queens_puzzle(state, queen_index + 1);
+		{
+			nb += _ft_ten_queens_puzzle(state, queen_index + 1);
+			state[queen_index]++;
+			nb += _ft_ten_queens_puzzle(state, queen_index);
+			return (nb);
+		}
 	}
 	state[queen_index]++;
-	return _ft_ten_queens_puzzle(state, queen_index);
+	return (_ft_ten_queens_puzzle(state, queen_index));
 }
 
 int	ft_ten_queens_puzzle(void)
 {
-	int	solution[10] = {0};
-	int nb_solutions;
+	int	solution[10];
+	int	nb_solutions;
 	int	i;
 
+	i = 0;
+	while (i < BOARD_SIZE)
+	{
+		solution[i] = 0;
+		i++;
+	}
 	nb_solutions = 0;
 	i = 0;
 	while (i < BOARD_SIZE)
 	{
 		solution[0] = i;
-		nb_solutions +=	_ft_ten_queens_puzzle(solution, 1);
+		nb_solutions += _ft_ten_queens_puzzle(solution, 1);
 		i++;
 	}
-	return nb_solutions;
+	return (nb_solutions);
 }

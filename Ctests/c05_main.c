@@ -30,19 +30,8 @@ int main()
 			printf("%d is prime\n", p);
 	printf("\nnext prime greater or equale to %d is %d\n", range, ft_find_next_prime(range));
 #endif
+	int nb = ft_ten_queens_puzzle();
 
-	int state[] = {0,2,4,1,0};
-	int size = sizeof(state) / sizeof(int);
-	int c_q = 4;
-	int i;
-	for(i=0; i< size ;i++)
-	{
-		if (ft_is_valid_position(state, c_q, i)){
-			printf("Valid column found!! : %d\n", i);
-			break;
-		}
-	}
-	if (i==size)
-		printf("No Valide column was found\n");
+	printf("Number of possible solutions : %d\n", nb);
 
 }
