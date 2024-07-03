@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:10:00 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/03 14:53:21 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/03 15:04:15 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -71,7 +71,6 @@ int	_ft_ten_queens_puzzle(int *state, int queen_index)
 int	ft_ten_queens_puzzle(void)
 {
 	int	solution[10];
-	int	nb_solutions;
 	int	i;
 
 	i = 0;
@@ -80,7 +79,5 @@ int	ft_ten_queens_puzzle(void)
 		solution[i] = 0;
 		i++;
 	}
-	nb_solutions = 0;
-	i = 0;
 	return (_ft_ten_queens_puzzle(solution, 0));
 }
