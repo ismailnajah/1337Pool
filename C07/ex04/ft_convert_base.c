@@ -6,11 +6,13 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:07:52 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/04 19:06:28 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/04 21:15:23 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
 #include <unistd.h>
+
+#define MAX_BUFF_SIZE 34
 
 int	ft_isvalid_base(char *base)
 {
@@ -34,23 +36,33 @@ int	ft_isvalid_base(char *base)
 	return (i);
 }
 
-void	ft_putnbr_base_buff(long long nbr, char *base_symboles, int base_size, char *buffer)
+char	*ft_putnbr_base_buff(long long nbr, char *b_sym, int b_size, char *buff)
 {
-	//make this function iterative;
+	int	cursor;
+	int	i;
+
+	cursor = 0;
+	i = 0;
 	if (nbr < 0)
 	{
-		write(1, "-", 1);
 		nbr = -nbr;
+		i = 1;
+		buff[cursor++] = '-';
 	}
-	if (nbr < base_size){
-		if(buffer != NULL)
-			buffer[]  = base_symboles + nbr;
-	}
-	else
+	while (nbr > 0)
 	{
-		ft_putnbr_base(nbr / base_size, base_symboles, base_size);
-		ft_putnbr_base(nbr % base_size, base_symboles, base_size);
+		buff[cursor++] = b_sym[nbr % b_size];
+		nbr = nbr / b_size;
 	}
+	buff[cursor++] = nbr % b_size;
+	while (i < cursor / 2)
+	{
+		nbr = buff[i];
+		buff[i] = buff[cursor - i - 1];
+		buff[cursor - i - 1] = nbr;
+		i++;
+	}
+	return (buff);
 }
 
 int	ft_inbase(char c, char *base)
@@ -82,40 +94,35 @@ int	ft_atoi_base(char *str, char *base, int base_size)
 		if (str[i++] == '-')
 			sign *= -1;
 	number = 0;
-	while (str[i] && ft_inbase(str[i], base) >= 0)
+	while (str[i])
 	{
 		digit = ft_inbase(str[i], base);
 		if (digit < 0)
-			break;
+			break ;
 		number = number * base_size + digit;
 		i++;
 	}
 	return (number * sign);
 }
 
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to) 
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int	base_from_size;
-	int	base_to_size;
-	int	number;
+	int		b_from_size;
+	int		b_to_size;
+	int		number;
+	int		i;
+	char	*buffer;
 
-	base_from_size = ft_isvalid_base(base_from);
-	base_to_size = ft_isvalid_base(base_to);
-	if (base_from_size == 0 || base_to_size == 0)
-		return (0);
-	number = ft_atoi_base(nbr, base_from, base_from_size);
-	ft_putnbr_base(number, base_to, base_to_size);
-	return (0);
+	b_from_size = ft_isvalid_base(base_from);
+	b_to_size = ft_isvalid_base(base_to);
+	if (b_to_size == 0 || b_from_size == 0)
+		return (NULL);
+	number = ft_atoi_base(nbr, base_from, b_from_size);
+	buffer = malloc(MAX_BUFF_SIZE * sizeof(char));
+	if (!buffer)
+		return (NULL);
+	i = 0;
+	while (i < MAX_BUFF_SIZE)
+		buffer[i++] = 0;
+	return (ft_putnbr_base_buff(number, base_to, b_to_size, buffer));
 }
-
-
-
-
-
-
-
-
-
-
-
-
