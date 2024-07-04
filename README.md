@@ -4,4 +4,8 @@
 - C00 : Done!
 - C01 : Done!
 - C02 : Done!
-- C03 : In progress...
+- C03 : Done!
+- C04 : Done!
+- C05 : Done!
+- C06 : Done!
+- C07 : In progress...
