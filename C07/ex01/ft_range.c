@@ -1,47 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 13:07:05 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/04 13:39:28 by inajah           ###   ########.fr       */
+/*   Created: 2024/07/04 13:27:31 by inajah            #+#    #+#             */
+/*   Updated: 2024/07/04 13:37:25 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
-#include <errno.h>
 
-unsigned int	ft_strlen(char *str)
+int	*ft_range(int min, int max)
 {
+	int	*tab;
 	int	i;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(char *src)
-{
-	unsigned int	size;
-	unsigned int	i;
-	char			*copy;
-
-	if (!src)
+	if (max <= min)
 		return (0);
-	size = ft_strlen(src);
-	copy = malloc(size * sizeof(char));
-	if (!copy)
-	{
-		errno = ENOMEM;
+	tab = malloc((max - min) * sizeof(int));
+	if(!tab)
 		return (0);
-	}
 	i = 0;
-	while (src[i])
+	while (i < (max - min))
 	{
-		copy[i] = src[i];
+		tab[i] = min + i;
 		i++;
 	}
-	return (copy);
+	return (tab);
 }
