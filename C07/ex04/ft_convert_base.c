@@ -6,11 +6,12 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:07:52 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/04 21:15:23 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/05 09:14:42 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 #define MAX_BUFF_SIZE 34
 
@@ -49,18 +50,17 @@ char	*ft_putnbr_base_buff(long long nbr, char *b_sym, int b_size, char *buff)
 		i = 1;
 		buff[cursor++] = '-';
 	}
-	while (nbr > 0)
+	while (nbr >= b_size)
 	{
 		buff[cursor++] = b_sym[nbr % b_size];
 		nbr = nbr / b_size;
 	}
-	buff[cursor++] = nbr % b_size;
-	while (i < cursor / 2)
+	buff[cursor] = b_sym[nbr % b_size];
+	while (i < cursor)
 	{
 		nbr = buff[i];
-		buff[i] = buff[cursor - i - 1];
-		buff[cursor - i - 1] = nbr;
-		i++;
+		buff[i++] = buff[cursor];
+		buff[cursor--] = nbr;
 	}
 	return (buff);
 }
@@ -115,7 +115,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 
 	b_from_size = ft_isvalid_base(base_from);
 	b_to_size = ft_isvalid_base(base_to);
-	if (b_to_size == 0 || b_from_size == 0)
+	if (b_to_size < 2 || b_from_size < 2)
 		return (NULL);
 	number = ft_atoi_base(nbr, base_from, b_from_size);
 	buffer = malloc(MAX_BUFF_SIZE * sizeof(char));

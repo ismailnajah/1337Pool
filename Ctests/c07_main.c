@@ -5,8 +5,8 @@
 
 int main()
 {
-	char *str = "    ++-+--++-+101010";
-	char *buff = ft_convert_base(str, "01", "0123456789");
-	printf("%s\n", buff);
+	char *str = "    ++-+---++-2147483648";
+	char *buff = ft_convert_base(str, "0123456789", "0123456789abcdef");
+	printf("ft_conver_base : \"%s\"\n", buff);
 	return 0;
 }
