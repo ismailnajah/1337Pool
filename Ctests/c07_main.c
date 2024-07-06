@@ -10,9 +10,14 @@ int main()
 	printf("ft_conver_base : \"%s\"\n\n", buff);
 
 
-	char *str_s = "abc ";
-	char *charset = "abc";
+	char *str_s = "     word1 word2 word3 word4";
+	char *charset = " ";
 	printf("--- testing ft_split ----\n");
-	ft_split(str_s, charset);
+	int count = ft_words_count(str_s, charset);
+	printf("\"%s\" has %d words\n", str_s, count);
+
+	char **words_list = ft_split(str_s, charset);
+	for(int i=0; i < count; i++)
+		printf("%s\n", words_list[i]);	
 	return 0;
 }
