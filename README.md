@@ -8,4 +8,5 @@
 - C04 : Done!
 - C05 : Done!
 - C06 : Done!
-- C07 : In progress...
+- C07 : Done!
+- C08 : In progress...
