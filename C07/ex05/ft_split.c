@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:33:20 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/06 11:18:22 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/06 13:00:38 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -27,7 +27,7 @@ void	ft_init_charset_hash(int *charset_hash, char *charset)
 	i = 0;
 	while(charset[i])
 	{
-		charset_hash[(unsigned char) charset[i]] = 1;
+		charset_hash[(unsigned int) charset[i]] = 1;
 		i++;
 	}
 }
@@ -43,12 +43,12 @@ int ft_words_count(char *str, char *charset)
 	i = 0;
 	while (str[i])
 	{
-		if (charset_hash[(unsigned char)str[i]] == 1)
+		if (charset_hash[(unsigned int)str[i]] == 1)
 			i++;
 		else
 		{
 			word_counter++;
-			while(str[i] && charset_hash[(unsigned char)str[i]] == 0)
+			while(str[i] && charset_hash[(unsigned int)str[i]] == 0)
 				i++;
 		}
 	}
@@ -59,10 +59,10 @@ char	*ft_get_next_word(char *str, int *charset_hash, int *word_size, int *i)
 {
 	char	*start;
 	
-	while (str[*i] && charset_hash[(unsigned char)str[*i]] == 1)
+	while (str[*i] && charset_hash[(unsigned int)str[*i]] == 1)
 		(*i)++;
 	start = str + *i;
-	while(str[*i] && charset_hash[(unsigned char)str[*i]] == 0)
+	while(str[*i] && charset_hash[(unsigned int)str[*i]] == 0)
 	{
 		*i = *i + 1;
 	}
@@ -114,5 +114,6 @@ char	**ft_split(char *str, char *charset)
 		ft_get_next_word(str, charset_hash, &word_size, &cursor);
 		words_list[i++] = ft_strndup((str + cursor) - word_size, word_size);
 	}
+	words_list[i] = 0;
 	return (words_list);
 }
