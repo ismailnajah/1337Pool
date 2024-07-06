@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:33:20 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/06 13:00:38 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/06 13:48:16 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -14,60 +14,54 @@
 
 #define ASCII_SIZE 256
 
-void	ft_init_charset_hash(int *charset_hash, char *charset)
+int	ft_words_count(char *str, int *hash_t)
 {
-	int	i;
-
-	i = 0;
-	while(i < ASCII_SIZE)
-	{
-		charset_hash[i] = 0;
-		i++;
-	}
-	i = 0;
-	while(charset[i])
-	{
-		charset_hash[(unsigned int) charset[i]] = 1;
-		i++;
-	}
-}
-
-int ft_words_count(char *str, char *charset)
-{
-	int	charset_hash[ASCII_SIZE];
 	int	word_counter;
 	int	i;
 
-	ft_init_charset_hash(charset_hash, charset);
 	word_counter = 0;
 	i = 0;
 	while (str[i])
 	{
-		if (charset_hash[(unsigned int)str[i]] == 1)
+		if (hash_t[(unsigned int)str[i]] == 1)
 			i++;
 		else
 		{
 			word_counter++;
-			while(str[i] && charset_hash[(unsigned int)str[i]] == 0)
+			while (str[i] && hash_t[(unsigned int)str[i]] == 0)
 				i++;
 		}
 	}
 	return (word_counter);
 }
 
-char	*ft_get_next_word(char *str, int *charset_hash, int *word_size, int *i)
+char	**ft_init_split(char *str, char *sep, int *hash_t, int *w_count)
 {
-	char	*start;
-	
-	while (str[*i] && charset_hash[(unsigned int)str[*i]] == 1)
-		(*i)++;
-	start = str + *i;
-	while(str[*i] && charset_hash[(unsigned int)str[*i]] == 0)
+	int		i;
+	char	**words_list;
+
+	i = 0;
+	while (i < ASCII_SIZE)
 	{
-		*i = *i + 1;
+		hash_t[i] = 0;
+		i++;
 	}
-	*word_size = (str + *i) - start;
-	return start;
+	i = 0;
+	while (sep[i])
+	{
+		hash_t[(unsigned int) sep[i]] = 1;
+		i++;
+	}
+	*w_count = ft_words_count(str, hash_t);
+	words_list = malloc(((*w_count) + 1) * sizeof(char *));
+	if (!words_list)
+		return (NULL);
+	if ((*w_count) == 0)
+	{
+		words_list[0] = 0;
+		return (words_list);
+	}
+	return (words_list);
 }
 
 char	*ft_strndup(char *src, unsigned int size)
@@ -88,32 +82,39 @@ char	*ft_strndup(char *src, unsigned int size)
 	return (copy);
 }
 
+void	_ft_split(char **words_list, int size, char *str, int *hash_t)
+{
+	char	*start;
+	int		i;
+	int		word_size;
+	int		index;
+
+	index = 0;
+	i = 0;
+	while (index < size)
+	{
+		while (str[i] && hash_t[(unsigned int)str[i]] == 1)
+			i++;
+		start = str + i;
+		while (str[i] && hash_t[(unsigned int)str[i]] == 0)
+			i++;
+		word_size = (str + i) - start;
+		if (word_size != 0)
+		{
+			words_list[index] = ft_strndup(start, word_size);
+			index++;
+		}
+	}
+}
+
 char	**ft_split(char *str, char *charset)
 {
 	char	**words_list;
 	int		words_count;
-	int		word_size;
-	int		cursor;
-	int		i;
 	int		charset_hash[ASCII_SIZE];
 
-	ft_init_charset_hash(charset_hash ,charset);
-	words_count = ft_words_count(str, charset);
-	words_list = malloc((words_count + 1) * sizeof(char *));
-	if (!words_list)
-		return (NULL);
-	if (words_count == 0)
-	{
-		words_list[0] = 0;
-		return (words_list);
-	}
-	i = 0;
-	cursor = 0;
-	while (i < words_count)
-	{
-		ft_get_next_word(str, charset_hash, &word_size, &cursor);
-		words_list[i++] = ft_strndup((str + cursor) - word_size, word_size);
-	}
-	words_list[i] = 0;
+	words_list = ft_init_split(str, charset, charset_hash, &words_count);
+	_ft_split(words_list, words_count, str, charset_hash);
+	words_list[words_count] = 0;
 	return (words_list);
 }
