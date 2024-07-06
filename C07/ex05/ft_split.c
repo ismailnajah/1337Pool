@@ -6,11 +6,10 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:33:20 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/06 13:48:16 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/06 15:06:05 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
-#include <stdio.h>
 
 #define ASCII_SIZE 256
 

@@ -6,11 +6,10 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:07:52 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/06 14:21:55 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/06 15:06:42 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
-#include <unistd.h>
 
 #define MAX_BUFF_SIZE 34
 
