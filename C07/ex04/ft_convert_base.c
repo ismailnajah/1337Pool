@@ -6,13 +6,16 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:07:52 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/05 22:27:20 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/06 14:21:55 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
 #include <unistd.h>
 
 #define MAX_BUFF_SIZE 34
+
+int	ft_inbase(char c, char *base);
+int	ft_atoi_base(char *str, char *base, int base_size);
 
 int	ft_isvalid_base(char *base)
 {
@@ -62,46 +65,6 @@ char	*ft_putnbr_base_buff(long long nbr, char *b_sym, int b_size, char *buff)
 		buff[cursor--] = nbr;
 	}
 	return (buff);
-}
-
-int	ft_inbase(char c, char *base)
-{
-	int	i;
-
-	i = 0;
-	while (base[i])
-	{
-		if (base[i] == c)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int	ft_atoi_base(char *str, char *base, int base_size)
-{
-	int	i;
-	int	number;
-	int	sign;
-	int	digit;
-
-	sign = 1;
-	i = 0;
-	while (str[i] && (('\t' <= str[i] && str[i] <= '\r') || str[i] == ' '))
-		i++;
-	while (str[i] && (str[i] == '-' || str[i] == '+'))
-		if (str[i++] == '-')
-			sign *= -1;
-	number = 0;
-	while (str[i])
-	{
-		digit = ft_inbase(str[i], base);
-		if (digit < 0)
-			break ;
-		number = number * base_size + digit;
-		i++;
-	}
-	return (number * sign);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)

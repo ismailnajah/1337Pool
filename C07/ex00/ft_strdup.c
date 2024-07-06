@@ -6,42 +6,42 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:07:05 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/04 13:39:28 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/06 15:00:51 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
 #include <errno.h>
 
-unsigned int	ft_strlen(char *str)
+char	*ft_allocate_copy(char *src)
 {
-	int	i;
+	char	*copy;
+	int		size;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	size = 0;
+	while (src[size])
+		size++;
+	copy = malloc((size + 1) * sizeof(char));
+	if (!copy)
+		return (NULL);
+	if (size == 0)
+		copy[0] = '\0';
+	return (copy);
 }
 
 char	*ft_strdup(char *src)
 {
-	unsigned int	size;
-	unsigned int	i;
-	char			*copy;
+	int		i;
+	char	*copy;
 
-	if (!src)
-		return (0);
-	size = ft_strlen(src);
-	copy = malloc(size * sizeof(char));
+	copy = ft_allocate_copy(src);
 	if (!copy)
-	{
-		errno = ENOMEM;
-		return (0);
-	}
+		return (NULL);
 	i = 0;
 	while (src[i])
 	{
 		copy[i] = src[i];
 		i++;
 	}
+	copy[i] = '\0';
 	return (copy);
 }
