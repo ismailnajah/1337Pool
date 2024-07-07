@@ -6,19 +6,21 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 09:47:06 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/07 11:57:08 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/07 14:14:28 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 
 #define SUCCESS 0
 #define FAILURE 1
+#define MAX_SIZE 11
 
-//void	ft_solution(int grid[][], int row, int col);
-void	ft_print_solution(int grid[10][10],int size);
 
-int g_size = 6;
-int g_grid[10][10];
+void	ft_solution(int row, int col);
+void	ft_print_solution(int grid[MAX_SIZE][MAX_SIZE],int size);
+
+int g_size;
+int g_grid[MAX_SIZE][MAX_SIZE];
 
 
 void	ft_putstr(char *str)
@@ -28,7 +30,7 @@ void	ft_putstr(char *str)
 }
 
 
-int	ft_leftright(int grid[10][10], char *rules,  int row, int col)
+int	ft_leftright(int grid[MAX_SIZE][MAX_SIZE], char *rules,  int row, int col)
 {
 	int i;
 	i = 0;
@@ -48,7 +50,7 @@ int	ft_leftright(int grid[10][10], char *rules,  int row, int col)
 	return (1);
 }
 
-int	ft_updown(int grid[10][10], char *rules, int row, int col)
+int	ft_updown(int grid[MAX_SIZE][MAX_SIZE], char *rules, int row, int col)
 {
 	int i;
 	i = 0;
@@ -68,7 +70,7 @@ int	ft_updown(int grid[10][10], char *rules, int row, int col)
 	return (1);
 }
 
-int	ft_valid_rules(int grid[10][10], char *rules)
+int	ft_valid_rules(int grid[MAX_SIZE][MAX_SIZE], char *rules)
 {
 	int i;
 	
@@ -93,8 +95,9 @@ int	ft_valid_rules(int grid[10][10], char *rules)
 
 int	main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
+	int size = 4;
+	g_size = size + 2;
+
 	if (ac != 2)
 	{
 		ft_putstr("too many or few arguments\n");
@@ -105,7 +108,7 @@ int	main(int ac, char **av)
 		ft_putstr("invalid set of rules!!\n");
 		return (FAILURE);
 	}
-	ft_print_solution(g_grid, g_size);
-//	ft_solution(grid, 1, 1);
+//	ft_print_solution(g_grid, g_size);
+	ft_solution(1, 1);
 	return (SUCCESS);
 }
