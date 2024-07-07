@@ -1,4 +1,4 @@
-all: main00 main01 main02 main03 main04 main05 main07 program_name list_params rev_list_params sort_params
+all: main00 main01 main02 main03 main04 main05 main07 main08 program_name list_params rev_list_params sort_params
 
 main00: c00_main.c
 	gcc -Wall -Wextra -Werror -o main00 c00_main.c
@@ -20,6 +20,9 @@ main05: c04_main.c
 
 main07: c07_main.c
 	gcc -Wall -Wextra -Werror -o main07 c07_main.c
+
+main08: c08_main.c
+	gcc -Wall -Wextra -Werror -o main08 c08_main.c
 
 sort_params: ../C06/ex03/ft_sort_params.c
 	gcc -Wall -Wextra -Werror -o sort_params ../C06/ex03/ft_sort_params.c
