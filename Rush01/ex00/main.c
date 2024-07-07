@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 09:47:06 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/07 16:51:05 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/07 17:38:32 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -18,13 +18,8 @@
 int	g_size;
 int	g_grid[MAX_SIZE][MAX_SIZE];
 
+void	ft_putstr(char *str);
 void	ft_solution(int row, int col);
-
-void	ft_putstr(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
 
 int	ft_leftright(int grid[MAX_SIZE][MAX_SIZE], char *rules, int row, int col)
 {
