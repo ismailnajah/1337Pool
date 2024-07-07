@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 09:50:28 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/07 16:00:34 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/07 16:12:41 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,10 @@ int ft_validate_solution()
 	int col_fw;
 	int col_bw;
 
-	row_fw = ft_isvalid_row(1, 1, 0);
-	row_bw = ft_isvalid_row(g_size - 2, -1, g_size - 1);
-	col_fw = ft_isvalid_col(1, 1, 0);
-	col_bw = ft_isvalid_col(g_size - 2, -1, g_size - 1);
+	row_fw = ft_isvalid_row(1, FW, 0);
+	row_bw = ft_isvalid_row(g_size - 2, BW, g_size - 1);
+	col_fw = ft_isvalid_col(1, FW, 0);
+	col_bw = ft_isvalid_col(g_size - 2, BW, g_size - 1);
 	return row_fw && row_bw && col_fw && col_bw;
 }
 
