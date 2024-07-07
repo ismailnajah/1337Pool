@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 09:47:06 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/07 17:38:32 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/07 18:00:15 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -19,7 +19,7 @@ int	g_size;
 int	g_grid[MAX_SIZE][MAX_SIZE];
 
 void	ft_putstr(char *str);
-void	ft_solution(int row, int col);
+int		ft_solution(int row, int col);
 
 int	ft_leftright(int grid[MAX_SIZE][MAX_SIZE], char *rules, int row, int col)
 {
@@ -93,14 +93,18 @@ int	main(int ac, char **av)
 	g_size = size + 2;
 	if (ac != 2)
 	{
-		ft_putstr("too many or few arguments\n");
+		ft_putstr("Error\n");
 		return (FAILURE);
 	}
 	if (!ft_valid_rules(g_grid, av[1]))
 	{
-		ft_putstr("invalid set of rules!!\n");
+		ft_putstr("Error\n");
 		return (FAILURE);
 	}
-	ft_solution(1, 1);
+	if (!ft_solution(1, 1))
+	{
+		ft_putstr("Error\n");
+		return (FAILURE);
+	}
 	return (SUCCESS);
 }
