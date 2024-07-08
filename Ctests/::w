@@ -1,13 +1,16 @@
 #include "../C08/ex01/ft_boolean.h"
 #include "../C08/ex02/ft_abs.h"
 #include "../C08/ex03/ft_point.h"
-#include "../C08/ex04/ft_stock_str.h"
-#include "../C08/ex04/ft_strs_to_tab.c"
-#include "../C08/ex05/ft_show_tab.c"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
+
+void ft_putstr(char *str)
+{
+	while(*str)
+		write(1, str++, 1);
+}
 
 t_bool	ft_is_even(int nbr)
 {

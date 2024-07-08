@@ -6,11 +6,11 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 08:19:50 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/08 08:29:18 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/08 08:53:16 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
 # define FT_ABS_H
-# define ABS(value) (value) * (1 - 2 * ((value < 0)))
+# define ABS(value) (value) * (1 - 2 * ((value) < 0))
 #endif
