@@ -6,7 +6,7 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 13:15:43 by inajah            #+#    #+#              #
-#    Updated: 2024/07/08 13:46:00 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/08 14:50:02 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,5 +21,6 @@ do
 	gcc $CFLAGS -c $name.c -o $name.o
 	O_FILES+="$name.o "
 done
-echo "ar rcs libft.a $O_FILES"
-ar rcs libft.a $O_FILES
+echo "libtool $O_FILES -o libft.a"
+libtool $O_FILES -o libft.a
+rm $O_FILES
