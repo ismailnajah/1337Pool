@@ -1,4 +1,6 @@
 #include "../C08/ex01/ft_boolean.h"
+#include "../C08/ex02/ft_abs.h"
+#include <stdio.h>
 
 
 void ft_putstr(char *str)
@@ -19,5 +21,8 @@ int main(int ac, char **av)
 		ft_putstr(EVEN_MSG);
 	else
 		ft_putstr(ODD_MSG);
+
+	int value = 5;
+	printf("%d\n", ABS(value - 10 + 1));
 	return (SUCCESS);
 }
