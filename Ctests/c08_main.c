@@ -1,5 +1,6 @@
 #include "../C08/ex01/ft_boolean.h"
 #include "../C08/ex02/ft_abs.h"
+#include "../C08/ex03/ft_point.h"
 #include <stdio.h>
 
 
@@ -14,6 +15,17 @@ t_bool	ft_is_even(int nbr)
 	return ((EVEN(nbr)) ? TRUE : FALSE);
 }
 
+void	set_point(t_point *point)
+{
+	point->x = 42;
+	point->y = 21;
+}
+
+void print_point(t_point point)
+{
+	printf("(%d, %d)\n", point.y, point.x);
+}
+
 int main(int ac, char **av)
 {
 	(void) av;
@@ -23,6 +35,12 @@ int main(int ac, char **av)
 		ft_putstr(ODD_MSG);
 
 	int value = 5;
-	printf("%d\n", ABS(value - 10 + 1));
+	printf("abs(%d) = %d\n", (value - 15 + 3),ABS(value - 15 + 3 ));
+
+
+	t_point	point;
+	set_point(&point);
+	print_point(point);
+
 	return (SUCCESS);
 }
