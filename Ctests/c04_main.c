@@ -2,16 +2,16 @@
 #include <string.h>
 #include <limits.h>
 
-#define ON 1
+#define ON 0
 
 #include "../C04/ex00/ft_strlen.c"
 #include "../C04/ex01/ft_putstr.c"
 #include "../C04/ex02/ft_putnbr.c"
 #if ON
-#include "ft_atoi_test.c"
 #include "ft_putnbr_base_test.c"
 #endif
 
+#include "ft_atoi_test.c"
 //#include "../C04/ex05/ft_atoi_base.c"
 
 #define NL write(1, "\n", 1)
@@ -33,17 +33,17 @@ int main()
 	ft_putnbr(0);
 
 	NL;
-	ft_atoi_run_tests();
 
 	//testing ex04
 	ft_putstr("\n Testing ft_putnbr_base\n");
 	ft_putnbr_base_run_tests();
 #endif
-#if 0
-	char *base = "01";
-	char *str = "101010";
-	int n = ft_atoi_base(str, base);
-	printf("%d\n", n);
+#if 1
+	//char *base = "01";
+	//char *str = "101010";
+	ft_atoi_run_tests();
+	//int n = ft_atoi_base(NULL, NULL);
+	//printf("%d\n", n);
 #endif
 	return 0;
 }

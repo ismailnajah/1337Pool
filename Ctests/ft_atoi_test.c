@@ -18,9 +18,9 @@ void ft_atoi_run_tests() {
         "   \t\n\r\f\v --def567",
         "",
         "  \t\n\r\f\v ",
-		"    \t \n \v    -922337203685477"
+		"    \t \n \v    -922337203685477",
+		NULL,
     };
-
     int expected_results[] = {
         123,
         456,
@@ -33,6 +33,7 @@ void ft_atoi_run_tests() {
         0,
         0,
 		atoi(test_cases[10]),
+		atoi(NULL),
     };
     int num_tests = sizeof(test_cases) / sizeof(test_cases[0]);
 
