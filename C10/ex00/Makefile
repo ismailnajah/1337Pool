@@ -1,17 +1,30 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    libft_creator.sh                                   :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/08 13:15:43 by inajah            #+#    #+#              #
-#    Updated: 2024/07/09 11:44:57 by inajah           ###   ########.fr        #
+#    Created: 2024/07/09 17:12:25 by inajah            #+#    #+#              #
+#    Updated: 2024/07/09 17:16:52 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#!/bin/sh
-rm -f libft.a
-find . -name "*.c" -type f -exec gcc -Wall -Werror -Wextra -c {} \;
-ar rcs libft.a *.o
-find . -name "*.o" -type f -delete
+PROG_NAME = ft_display_file
+
+C_FILES = ft_display_file.c
+
+CFLAGS = -Wall -Wextra -Werror
+CC = cc
+
+all: $(PROG_NAME)
+
+
+$(PROG_NAME): $(C_FILES)
+	$(CC) $(CFLAGS) -o $@ $^
+
+clean:
+	echo $(C_FILES:.c=.o)
+
+fclean: clean
+	echo $(PROG_NAME)
