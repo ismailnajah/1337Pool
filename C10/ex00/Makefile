@@ -6,7 +6,7 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/09 17:12:25 by inajah            #+#    #+#              #
-#    Updated: 2024/07/09 17:16:52 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/09 19:39:44 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,14 @@ CC = cc
 all: $(PROG_NAME)
 
 
-$(PROG_NAME): $(C_FILES)
+$(PROG_NAME): $(C_FILES:.c=.o)
 	$(CC) $(CFLAGS) -o $@ $^
 
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^
+
 clean:
-	echo $(C_FILES:.c=.o)
+	rm -f $(C_FILES:.c=.o)
 
 fclean: clean
-	echo $(PROG_NAME)
+	rm -f $(PROG_NAME)
