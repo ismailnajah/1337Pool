@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:42:25 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/10 20:38:09 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/10 20:49:43 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int main(int ac, char **av)
 	{
 		if (av[1][0] == '-' && av[1][1] == 'c')
 		{
+			//TODO: handle space between -c and the value of the offset
 			success = ft_get_offset(&offset, av);
 			if (!success)
 				return (1);
