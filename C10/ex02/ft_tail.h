@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:51:39 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/10 18:52:49 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/10 20:37:04 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ int		ft_get_offset(int *offset, char **av);
 int		ft_tail_error(char *prog_name, char *path, int error);
 int		ft_tail_read(int nbytes);
 int		ft_tail_files(int ac, char **av, int nbytes);
+
+typedef struct s_file
+{
+	char *path;
+	int	len;
+}	t_file;
 
 //did not handle the non readable files (permission denied error)
 

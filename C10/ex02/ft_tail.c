@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:14:53 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/10 18:53:57 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/10 20:44:55 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ int	ft_tail_error(char *prog_name, char *av, int error)
 		ft_error(av);
 		ft_error("\n");
 	}
-	else if (error == ENOENT)
+	else
 	{
 		ft_error(basename(prog_name));
 		ft_error(": ");
 		ft_error(av);
 		ft_error(": ");
 		ft_error(strerror(error));
+		ft_error("\n");
 	}
 	return (0);
 }
@@ -80,68 +81,72 @@ int	ft_tail_read(int nbytes)
 	return (0);
 }
 
-int	ft_filelen(char *path)
-{
-	int		len;
-	int		fd;
-	char	c;
 
-	len = 0;
-	fd = open(path, O_RDONLY);
-	while (read(fd, &c, 1))
-		len++;
-	close(fd);
-	return (len);
-}
-
-int	ft_tail_file(char *path, int nbytes)
+int	ft_read_file(char *path, char *buffer, int *file_len)
 {
 	int 	fd;
-	char	*buffer;
-	int		file_len;
-	int		offset;
+	char	c;
 	
-	file_len = 0;
+	*file_len = 0;
 	fd = open(path, O_DIRECTORY);
 	if (fd < 0)
 	{
 		fd = open(path, O_RDONLY);
 		if (fd < 0)
-			return (ENOENT);
-		ft_putstr("==> ");
-		ft_putstr(path);
-		ft_putstr(" <==\n");
-		file_len = ft_filelen(path);
-		buffer = malloc((file_len + 1) * sizeof(char));
-		read(fd, buffer, sizeof(buffer) - 1);
-		offset = file_len - nbytes;
-		if (offset < 0)
-			offset = 0;
-		ft_putstr(buffer + offset);
-		free(buffer);
+			return (errno);	
+		while (read(fd, &c, 1))
+		{
+			buffer[*file_len] = c;
+			(*file_len)++;
+		}
+		buffer[*file_len] = '\0';	
 	}
 	return 0;
 }
 
-int	ft_tail_files(int ac, char **av, int offset)
+void	ft_print_buffer(char *buffer, t_file meta, int nbytes, int nbfiles)
 {
-	int i;
-	int err;
-	int total_err;
+	int	offset;
+
+	if (nbfiles > 1)
+	{
+		ft_putstr("==> ");
+		ft_putstr(meta.path);
+		ft_putstr(" <==\n");
+	}
+	offset = meta.len - nbytes;
+	if (offset < 0)
+		offset = 0;
+	ft_putstr(buffer + offset);
+}
+
+int	ft_tail_files(int ac, char **av, int nbytes)
+{
+	char	buffer[30000];
+	t_file	meta;
+	int		total_err;
+	int		err;
+	int		i;
 
 	i = 1;
 	total_err = 0;
-	if (offset >= 0)
+	if (nbytes >= 0)
 		i = 2;
 	while (i < ac)
 	{
-		err = ft_tail_file(av[i], offset);
+		err = ft_read_file(av[i], buffer, &meta.len);
 		if (err)
 		{
 			ft_tail_error(av[0], av[i], err);
 			total_err++;
 		}
-		ft_putstr("\n");
+		else
+		{
+			meta.path = av[i];
+			if (i != 2)
+				ft_putstr("\n");
+			ft_print_buffer(buffer, meta, nbytes, ac - 2);
+		}
 		i++;
 	}
 	return (total_err);
