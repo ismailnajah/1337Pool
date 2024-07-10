@@ -6,7 +6,7 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/09 17:12:25 by inajah            #+#    #+#              #
-#    Updated: 2024/07/10 15:49:05 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/10 17:03:10 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ CFLAGS = -Wall -Wextra -Werror
 CC = cc
 
 all: $(PROG_NAME)
-
 
 $(PROG_NAME): $(C_FILES:.c=.o)
 	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@ $^

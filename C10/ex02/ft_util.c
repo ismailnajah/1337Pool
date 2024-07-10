@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:18:31 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/10 13:30:36 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/10 17:12:55 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,14 @@ void	ft_error(char *str)
 		i++;
 	}
 }
+
+int	ft_strlen(char *str)
+{
+	int size;
+
+	size = 0;
+	while (str[size])
+		size++;
+	return (size);
+}
+
