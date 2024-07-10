@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:00:46 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/09 19:37:01 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/10 08:29:20 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,22 @@ void	ft_putnstr(char *str, int size)
 
 int	main(int ac, char **av)
 {
-	char	buffer[1024];
+	char	buffer;
 	int		fd;
-	int		len;
 
 	if (ac < 2)
 		return (ft_error("File name missing.\n"));
 	if (ac > 2)
 		return (ft_error("Too many arguments.\n"));
-	fd = open(av[1], O_RDONLY);
+	fd = open(av[1], O_DIRECTORY);
 	if (fd < 0)
-		return (ft_error("Cannot read file.\n"));
-	len = 1;
-	while (len > 0)
 	{
-		len = read(fd, buffer, sizeof(buffer));
-		ft_putnstr(buffer, len);
+		fd = open(av[1], O_RDONLY);
+		if(fd < 0)
+			return (ft_error("Cannot read file.\n"));
+		while (read(fd, &buffer, 1))
+			ft_putchar(buffer);
+		close(fd);
 	}
-	close(fd);
-	return (0);
+	return (1);
 }
