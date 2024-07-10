@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:51:39 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/10 17:37:20 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/10 18:52:49 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
-# define ILLEGAL_OFFSET 1
-# define ILLEGAL_OPTION 2
+# define ILLEGAL_OFFSET -1
+# define ILLEGAL_OPTION -2
 
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
@@ -35,6 +35,8 @@ int		ft_strlen(char *str);
 int		ft_get_offset(int *offset, char **av);
 int		ft_tail_error(char *prog_name, char *path, int error);
 int		ft_tail_read(int nbytes);
-int		ft_tail_files(int ac, char **av, int offset);
+int		ft_tail_files(int ac, char **av, int nbytes);
+
+//did not handle the non readable files (permission denied error)
 
 #endif
