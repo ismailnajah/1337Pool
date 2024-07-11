@@ -6,7 +6,7 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/09 17:12:25 by inajah            #+#    #+#              #
-#    Updated: 2024/07/09 19:45:07 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/11 13:04:22 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,9 @@ C_FILES = ft_display_file.c
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
 
-all: $(PROG_NAME)
+.PHONY: all clean fclean
 
+all: $(PROG_NAME)
 
 $(PROG_NAME): $(C_FILES:.c=.o)
 	$(CC) $(CFLAGS) -o $@ $^

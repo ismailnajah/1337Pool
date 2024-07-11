@@ -6,7 +6,7 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/09 17:12:25 by inajah            #+#    #+#              #
-#    Updated: 2024/07/10 10:27:25 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/11 13:05:09 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,9 @@ INCLUDES = .
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
 
-all: $(PROG_NAME)
+.PHONY: all clean fclean re
 
+all: $(PROG_NAME)
 
 $(PROG_NAME): $(C_FILES:.c=.o)
 	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@ $^

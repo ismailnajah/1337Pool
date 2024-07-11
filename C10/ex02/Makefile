@@ -6,7 +6,7 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/09 17:12:25 by inajah            #+#    #+#              #
-#    Updated: 2024/07/11 11:01:20 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/11 13:05:47 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ C_FILES = main.c ft_tail.c ft_util.c
 INCLUDES = .
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
+
+.PHONY: all clean fclean re
 
 all: $(PROG_NAME)
 
