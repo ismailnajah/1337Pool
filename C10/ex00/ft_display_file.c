@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:00:46 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/10 08:30:57 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/11 11:17:11 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int ac, char **av)
 	if (fd < 0)
 	{
 		fd = open(av[1], O_RDONLY);
-		if(fd < 0)
+		if (fd < 0)
 			return (ft_error("Cannot read file.\n"));
 		while (read(fd, &buffer, 1))
 			ft_putchar(buffer);
