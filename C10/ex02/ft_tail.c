@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:14:53 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/11 10:27:41 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/11 10:54:18 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int	ft_tail_files(int ac, char **av, int nbytes, int p_shift)
 		else
 		{
 			meta.path = av[i++];
-			ft_print_buffer(buffer, meta, nbytes, ac - 2);
+			ft_print_buffer(buffer, meta, nbytes, ac - (2 + 1 * p_shift));
 		}
 	}
 	return (total_err);
