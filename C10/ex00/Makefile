@@ -6,29 +6,26 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/09 17:12:25 by inajah            #+#    #+#              #
-#    Updated: 2024/07/11 13:04:22 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/11 17:01:33 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROG_NAME = ft_display_file
-
-C_FILES = ft_display_file.c
-
-CFLAGS = -Wall -Wextra -Werror
+NAME = ft_display_file
 CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
+SRC = ft_display_file.c
+OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean fclean
 
-all: $(PROG_NAME)
+all: $(NAME)
 
-$(PROG_NAME): $(C_FILES:.c=.o)
-	$(CC) $(CFLAGS) -o $@ $^
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $^
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -f $(C_FILES:.c=.o)
+	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(PROG_NAME)
+	rm -f $(NAME)

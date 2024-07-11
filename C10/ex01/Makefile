@@ -6,32 +6,30 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/09 17:12:25 by inajah            #+#    #+#              #
-#    Updated: 2024/07/11 13:05:09 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/11 17:05:35 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROG_NAME = ft_cat
-
-C_FILES = ft_cat.c main.c ft_util.c
-INCLUDES = .
-CFLAGS = -Wall -Wextra -Werror
+NAME = ft_cat
 CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
+SRC = ft_cat.c main.c ft_util.c
+HEADER = .
+OBJ := $(SRC:.c=.o)
 
 .PHONY: all clean fclean re
 
-all: $(PROG_NAME)
+all: $(NAME)
 
-$(PROG_NAME): $(C_FILES:.c=.o)
-	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@ $^
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $^
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -I $(HEADER) -o $(NAME)
 
 clean:
-	rm -f $(C_FILES:.c=.o)
+	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(PROG_NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
