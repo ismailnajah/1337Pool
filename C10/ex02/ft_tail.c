@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:14:53 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/10 20:44:55 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/11 09:50:32 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,27 @@ int	ft_tail_error(char *prog_name, char *av, int error)
 	return (0);
 }
 
-int	ft_get_offset(int *offset, char **av)
+int	ft_get_nbytes(char **av, int *nbytes, int p_shift)
 {
 	int	i;
+	int av_i;
 
-	*offset = 0;
-	i = 2; // we handled the -c before calling this function
-	while (av[1][i])
+	*nbytes = 0;
+	i = 2;
+	av_i = 1;
+	if(p_shift == 1)
 	{
-		if (av[1][i] < '0' || '9' < av[1][i])
+		i = 0;
+		av_i = 2;
+	}
+	while (av[av_i][i])
+	{
+		if (av[av_i][i] < '0' || '9' < av[av_i][i])
 		{
-			*offset = -1;
-			return (ft_tail_error(av[0], av[1] + 2, ILLEGAL_OFFSET)); 
+			*nbytes = -1;
+			return (ft_tail_error(av[0], av[av_i] + 2 * (1 - p_shift), ILLEGAL_OFFSET)); 
 		}
-		*offset = *offset * 10 + (av[1][i] - '0');
+		*nbytes = *nbytes * 10 + (av[av_i][i] - '0');
 		i++;
 	}
 	return (1);
@@ -64,10 +71,7 @@ int	ft_tail_read(int nbytes)
 	while (read(STDIN, &c, 1))
 	{
 		if (c != EOF)
-		{
-			text[i] = c;
-			i++;
-		}
+			text[i++] = c;
 		else
 			break;
 	}
@@ -80,7 +84,6 @@ int	ft_tail_read(int nbytes)
 	ft_putstr(text + offset);
 	return (0);
 }
-
 
 int	ft_read_file(char *path, char *buffer, int *file_len)
 {
@@ -107,7 +110,10 @@ int	ft_read_file(char *path, char *buffer, int *file_len)
 void	ft_print_buffer(char *buffer, t_file meta, int nbytes, int nbfiles)
 {
 	int	offset;
+	static int counter;
 
+	if (counter > 0)
+		ft_putstr("\n");
 	if (nbfiles > 1)
 	{
 		ft_putstr("==> ");
@@ -118,9 +124,10 @@ void	ft_print_buffer(char *buffer, t_file meta, int nbytes, int nbfiles)
 	if (offset < 0)
 		offset = 0;
 	ft_putstr(buffer + offset);
+	counter++;
 }
 
-int	ft_tail_files(int ac, char **av, int nbytes)
+int	ft_tail_files(int ac, char **av, int nbytes, int p_shift)
 {
 	char	buffer[30000];
 	t_file	meta;
@@ -128,10 +135,10 @@ int	ft_tail_files(int ac, char **av, int nbytes)
 	int		err;
 	int		i;
 
-	i = 1;
+	i = 1 + p_shift;
 	total_err = 0;
 	if (nbytes >= 0)
-		i = 2;
+		i += 1;
 	while (i < ac)
 	{
 		err = ft_read_file(av[i], buffer, &meta.len);
@@ -143,8 +150,6 @@ int	ft_tail_files(int ac, char **av, int nbytes)
 		else
 		{
 			meta.path = av[i];
-			if (i != 2)
-				ft_putstr("\n");
 			ft_print_buffer(buffer, meta, nbytes, ac - 2);
 		}
 		i++;

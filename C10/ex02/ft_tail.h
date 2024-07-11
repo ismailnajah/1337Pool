@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:51:39 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/10 20:37:04 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/11 09:31:08 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	ft_putstr(char *str);
 void	ft_error(char *str);
 int		ft_strlen(char *str);
 
-int		ft_get_offset(int *offset, char **av);
+int		ft_get_nbytes(char **av, int *nbytes, int p_shift);
 int		ft_tail_error(char *prog_name, char *path, int error);
 int		ft_tail_read(int nbytes);
-int		ft_tail_files(int ac, char **av, int nbytes);
+int		ft_tail_files(int ac, char **av, int nbytes, int p_shift);
 
 typedef struct s_file
 {

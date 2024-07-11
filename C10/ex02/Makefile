@@ -6,11 +6,11 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/09 17:12:25 by inajah            #+#    #+#              #
-#    Updated: 2024/07/10 20:33:58 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/11 08:12:22 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROG_NAME = ft_tail
+PROG_NAME = tail
 
 C_FILES = main.c ft_tail.c ft_util.c
 INCLUDES = .
