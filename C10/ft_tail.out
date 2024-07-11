@@ -1,0 +1,25 @@
+==> Makefile <==
+
+
+
+==> ft_tail <==
+
+==> ft_tail.c <==
+}
+
+==> ft_tail.h <==
+f
+
+==> ft_tail.o <==
+
+==> ft_util.c <==
+}
+
+==> ft_util.o <==
+
+==> main.c <==
+}
+
+==> main.o <==
+
+==> test <==

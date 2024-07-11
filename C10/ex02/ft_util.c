@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:18:31 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/10 17:12:55 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/11 10:32:19 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_error(char *str)
 
 int	ft_strlen(char *str)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	while (str[size])
@@ -51,3 +51,23 @@ int	ft_strlen(char *str)
 	return (size);
 }
 
+int	ft_read_file(char *path, char *buffer, int *file_len)
+{
+	int		fd;
+	char	c;
+	*file_len = 0;
+	fd = open(path, O_DIRECTORY);
+	if (fd < 0)
+	{
+		fd = open(path, O_RDONLY);
+		if (fd < 0)
+			return (errno);
+		while (read(fd, &c, 1))
+		{
+			buffer[*file_len] = c;
+			(*file_len)++;
+		}
+	}
+	buffer[*file_len] = '\0';
+	return (0);
+}
