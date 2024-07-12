@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:48:44 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/12 09:58:24 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/12 10:31:44 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ft_print_int_as_hex(int index)
 		index /= 16;
 	}
 	ft_putstr(out);
-	ft_putchar(' ');
 }
 
 void	ft_print_str_as_hex(char *str, int padding)
@@ -86,6 +85,7 @@ void	ft_print_line(char *buffer, int row, int mode)
 	char	*str;
 
 	ft_print_int_as_hex(row);
+	ft_putchar(' ');
 	str = buffer + row;
 	ft_print_str_as_hex(str, mode);
 	if (mode)
@@ -96,7 +96,7 @@ void	ft_print_line(char *buffer, int row, int mode)
 	ft_putchar('\n');
 }
 
-int	ft_hexdump_read(int mode)
+int	ft_hexdump_read(int fd, int mode)
 {
 	int		row;
 	char	buffer[30000];
@@ -105,7 +105,7 @@ int	ft_hexdump_read(int mode)
 
 	index = 0;
 	row = 0;
-	while (read(STDIN, &c, 1))
+	while (read(fd, &c, 1))
 	{
 		buffer[index] = c;
 		if (index > 0 && (index + 1) % LINE_SIZE  == 0)
@@ -120,5 +120,55 @@ int	ft_hexdump_read(int mode)
 		ft_print_line(buffer, row, mode);
 	ft_print_int_as_hex(row + (index % LINE_SIZE));
 	ft_putchar('\n');
+	return (0);
+}
+
+
+int	ft_hexdump_error(char *prog_name, char *path, int err)
+{
+	if (err == ENOENT)
+	{
+		ft_error(basename(prog_name));
+		ft_error(": ");
+		ft_error(path);
+		ft_error(": ");
+		ft_error(strerror(err));
+		ft_error("\n");
+		ft_error(basename(prog_name));
+		ft_error(": ");
+		ft_error(path);
+		ft_error(": ");
+		ft_error(strerror(EBADF));
+		ft_error("\n");
+	} 
+	else
+	{	ft_error(basename(prog_name));
+		ft_error(": ");
+		ft_error(path);
+		ft_error(": ");
+		ft_error(strerror(err));
+		ft_error("\n");
+	}
+	return (FAILURE);
+}
+
+int	ft_hexdump_file(char *path, int mode)
+{
+	int	fd;
+
+	fd = open(path, O_DIRECTORY);
+	if (fd < 0)
+	{
+		fd = open(path, O_RDONLY);
+		if (fd < 1)
+			return (ENOENT);
+		ft_hexdump_read(fd, mode);
+		close(fd);
+	}
+	else
+	{
+		close(fd);
+		return (EISDIR);
+	}
 	return (0);
 }
