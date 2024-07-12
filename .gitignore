@@ -1,6 +1,7 @@
 .DS_Store
 mywork.c
 Ctests/main*
+*.o
 *.swp
 *.swn
 *.swo
