@@ -6,30 +6,30 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:48:44 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/13 11:12:44 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/13 15:14:52 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hexdump.h"
 
 
-void	ft_print_int_as_hex(int index)
+void	ft_print_int_as_hex(int n)
 {
-	char	out[8];
+	char	out[9];
 	int		i;
 	char	*hex_sym;
 
 	hex_sym = "0123456789abcdef";
 	i = 0;
-	while (i < 7)
+	while (i < 8)
 		out[i++] = '0';
 	out[i] = '\0';
 	i--;
-	while (index > 0)
+	while (n > 0)
 	{
-		out[i] = hex_sym[(unsigned int) index % 16];
+		out[i] = hex_sym[(unsigned int) n % 16];
 		i--;
-		index /= 16;
+		n /= 16;
 	}
 	ft_putstr(out);
 }
@@ -132,48 +132,40 @@ int	ft_hexdump_error(char *prog_name, char *path, int err)
 	return (FAILURE);
 }
 
-int	ft_hexdump_read(int fd, int mode)
+int	ft_hexdump_read(int fd, t_stream *s, int mode)
 {
-	static int	row;
 	static char	previous[17];
 	static int	star_printed;
-	static char	current[30000];
 	char		c;
-	int			index;
 
-	index = 0;
 	while (read(fd, &c, 1))
 	{
-		current[index] = c;
-		current[index + 1] = '\0';
-		if (index > 0 && (index + 1) % LINE_SIZE  == 0)
+		s->buffer[s->cursor] = c;
+		s->buffer[s->cursor + 1] = '\0';
+		if (s->cursor > 0 && (s->cursor + 1) % LINE_SIZE  == 0)
 		{
-			if (ft_strcmp(current + row, previous) != 0)
+			if (ft_strcmp(s->buffer + s->row, previous) != 0)
 			{
-				ft_print_line(current, row, mode);
+				ft_print_line(s->buffer,  s->row, mode);
+				ft_strcpy(previous, s->buffer + s->row);
 				star_printed = 0;
-				ft_strcpy(previous, current + row );
 			}
 			else if(!star_printed)
 			{
 				star_printed = 1;
 				ft_putstr("*\n");
 			}
-			row += LINE_SIZE;
+			s->row += LINE_SIZE;
 		}
-		index++;
+		s->cursor += 1;
 	}
-	if (index % LINE_SIZE != 0)
-		ft_print_line(current, row, mode);
-	ft_print_int_as_hex(row + (index % LINE_SIZE));
-	ft_putchar('\n');
 	return (0);
 }
 
-int	ft_hexdump_file(char **av, int file_index, int mode)
+int	ft_hexdump_file(char **av, t_stream *s, int mode)
 {
 	int		fd;
-	char	*path = av[file_index];
+	char	*path = av[s->index];
 
 	fd = open(path, O_DIRECTORY);
 	if (fd < 0)
@@ -183,7 +175,7 @@ int	ft_hexdump_file(char **av, int file_index, int mode)
 		{
 			return (ft_hexdump_error(av[0], path, errno));
 		}
-		ft_hexdump_read(fd, mode);
+		ft_hexdump_read(fd, s, mode);
 		close(fd);
 	}
 	else
@@ -194,16 +186,20 @@ int	ft_hexdump_file(char **av, int file_index, int mode)
 	return (0);
 }
 
-int	ft_hexdump_files(int ac, char **av, int index, int mode)
+int	ft_hexdump_files(int ac, char **av, t_stream *s, int mode)
 {
 	int total_err;
 
 	total_err = 0;
-	while (index < ac)
+	while (s->index < ac)
 	{
-		//row shoud be outside ft_hexdump_file 
-		total_err += ft_hexdump_file(av, index, mode);
-		index++;	
-	}
+
+		total_err += ft_hexdump_file(av, s, mode);
+		s->index++;	
+	}	
+	if (s->cursor % LINE_SIZE != 0)
+		ft_print_line(s->buffer, s->row, mode);
+	ft_print_int_as_hex(s->row + (s->cursor % LINE_SIZE));
+	ft_putchar('\n');
 	return (total_err);
 }
