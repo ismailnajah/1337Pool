@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:33:32 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/13 14:56:25 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/13 15:38:07 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ typedef struct s_stream
 	char	buffer[30000];
 }	t_stream;
 
+// TODO: fix the issue with binary files.
+// the problem is that i am printing with while(str[i])
+// which causes issue when there is 0 in the data
+// removing it will fix it but it will cause an issue
+// of the stream.
+// TODO: compare byte data instead of characters between prev and current line
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_error(char *str);
