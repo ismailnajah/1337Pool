@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:33:32 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/13 18:11:06 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/13 18:17:28 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_stream
 	int		index;
 	int		row;
 	int		cursor;
-	char	buffer[30000];
+	char	buffer[32];
 }	t_stream;
 
 // TODO: fix the issue with binary files.

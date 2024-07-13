@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:48:44 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/13 17:51:50 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/13 18:23:37 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	ft_print_non_printable(char *str, int size)
 
 void	ft_print_line(char *buffer, int row, int mode, int last)
 {
-	char	*str;
 	int		size;
 
 	size = LINE_SIZE;
@@ -91,12 +90,11 @@ void	ft_print_line(char *buffer, int row, int mode, int last)
 		size = last;
 	ft_print_int_as_hex(row, mode);
 	ft_putchar(' ');
-	str = buffer + row;
-	ft_print_str_as_hex(str, size, mode);
+	ft_print_str_as_hex(buffer, size, mode);
 	if (mode)
 	{
 		ft_putstr("  ");
-		ft_print_non_printable(str, size);
+		ft_print_non_printable(buffer, size);
 	}
 	ft_putchar('\n');
 }
@@ -148,10 +146,10 @@ int	ft_hexdump_read(int fd, t_stream *s, int mode)
 		s->buffer[s->cursor + 1] = '\0';
 		if (s->cursor > 0 && (s->cursor + 1) % LINE_SIZE  == 0)
 		{
-			if (!ft_bytecmp(s->buffer + s->row, previous, LINE_SIZE))
+			if (!ft_bytecmp(s->buffer , previous, LINE_SIZE))
 			{
-				ft_print_line(s->buffer,  s->row, mode, LINE_SIZE);
-				ft_bytecpy(previous, s->buffer + s->row, LINE_SIZE);
+				ft_print_line(s->buffer, s->row, mode, LINE_SIZE);
+				ft_bytecpy(previous, s->buffer , LINE_SIZE);
 				star_printed = 0;
 			}
 			else if(!star_printed)
@@ -161,7 +159,7 @@ int	ft_hexdump_read(int fd, t_stream *s, int mode)
 			}
 			s->row += LINE_SIZE;
 		}
-		s->cursor += 1;
+		s->cursor = (s->cursor + 1) % LINE_SIZE;
 	}
 	return (0);
 }
