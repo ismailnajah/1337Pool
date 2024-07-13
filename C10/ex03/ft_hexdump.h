@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:33:32 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/13 15:38:07 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/13 15:47:12 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_error(char *str);
 
-void	ft_print_int_as_hex(int n);
+void	ft_print_int_as_hex(int n, int mode);
 
 char	*ft_strcpy(char *dest, char *src);
 int		ft_strcmp(char *s1, char *s2);

@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:29:50 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/13 14:54:33 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/13 15:47:39 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 	if (ac == 1)
 	{
 		ft_hexdump_read(STDIN, &stream, 0);
-		ft_print_int_as_hex(stream.row + stream.index % LINE_SIZE);
+		ft_print_int_as_hex(stream.row + stream.index % LINE_SIZE, 0);
 		ft_putchar('\n');
 	}
 	else

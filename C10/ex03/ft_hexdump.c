@@ -6,14 +6,14 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:48:44 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/13 15:38:32 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/13 15:48:28 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hexdump.h"
 
 
-void	ft_print_int_as_hex(int n)
+void	ft_print_int_as_hex(int n, int mode)
 {
 	char	out[9];
 	int		i;
@@ -21,7 +21,7 @@ void	ft_print_int_as_hex(int n)
 
 	hex_sym = "0123456789abcdef";
 	i = 0;
-	while (i < 8)
+	while (i < 7 + mode)
 		out[i++] = '0';
 	out[i] = '\0';
 	i--;
@@ -85,7 +85,7 @@ void	ft_print_line(char *buffer, int row, int mode)
 {
 	char	*str;
 
-	ft_print_int_as_hex(row);
+	ft_print_int_as_hex(row, mode);
 	ft_putchar(' ');
 	str = buffer + row;
 	ft_print_str_as_hex(str, mode);
@@ -199,7 +199,10 @@ int	ft_hexdump_files(int ac, char **av, t_stream *s, int mode)
 	}	
 	if (s->cursor % LINE_SIZE != 0)
 		ft_print_line(s->buffer, s->row, mode);
-	ft_print_int_as_hex(s->row + (s->cursor % LINE_SIZE));
-	ft_putchar('\n');
+	if (s->row > 0)
+	{
+		ft_print_int_as_hex(s->row + (s->cursor % LINE_SIZE), mode);
+		ft_putchar('\n');
+	}
 	return (total_err);
 }
