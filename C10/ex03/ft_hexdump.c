@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:48:44 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/13 15:48:28 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/13 17:51:50 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_print_int_as_hex(int n, int mode)
 	ft_putstr(out);
 }
 
-void	ft_print_str_as_hex(char *str, int padding)
+void	ft_print_str_as_hex(char *str, int size, int padding)
 {
 	int		i;
 	char	*hex_sym;
@@ -43,7 +43,7 @@ void	ft_print_str_as_hex(char *str, int padding)
 	hex_sym = "0123456789abcdef";
 	if (padding)
 		ft_putchar(' ');
-	while(i < LINE_SIZE && str[i])
+	while(i < LINE_SIZE && i < size)
 	{
 		ft_putchar(hex_sym[((unsigned char) str[i]) / 16]);
 		ft_putchar(hex_sym[((unsigned char) str[i]) % 16]);
@@ -64,13 +64,13 @@ void	ft_print_str_as_hex(char *str, int padding)
 	}
 }
 
-void	ft_print_non_printable(char *str)
+void	ft_print_non_printable(char *str, int size)
 {
 	int	i;
 
 	ft_putchar('|');
 	i = 0;
-	while(i < LINE_SIZE && str[i])
+	while(i < size)
 	{
 		if (' ' <= str[i] && str[i] <= '~')
 			ft_putchar(str[i]);
@@ -81,18 +81,22 @@ void	ft_print_non_printable(char *str)
 	ft_putchar('|');
 }
 
-void	ft_print_line(char *buffer, int row, int mode)
+void	ft_print_line(char *buffer, int row, int mode, int last)
 {
 	char	*str;
+	int		size;
 
+	size = LINE_SIZE;
+	if (last)
+		size = last;
 	ft_print_int_as_hex(row, mode);
 	ft_putchar(' ');
 	str = buffer + row;
-	ft_print_str_as_hex(str, mode);
+	ft_print_str_as_hex(str, size, mode);
 	if (mode)
 	{
 		ft_putstr("  ");
-		ft_print_non_printable(str);
+		ft_print_non_printable(str, size);
 	}
 	ft_putchar('\n');
 }
@@ -144,10 +148,10 @@ int	ft_hexdump_read(int fd, t_stream *s, int mode)
 		s->buffer[s->cursor + 1] = '\0';
 		if (s->cursor > 0 && (s->cursor + 1) % LINE_SIZE  == 0)
 		{
-			if (ft_strcmp(s->buffer + s->row, previous) != 0)
+			if (!ft_bytecmp(s->buffer + s->row, previous, LINE_SIZE))
 			{
-				ft_print_line(s->buffer,  s->row, mode);
-				ft_strcpy(previous, s->buffer + s->row);
+				ft_print_line(s->buffer,  s->row, mode, LINE_SIZE);
+				ft_bytecpy(previous, s->buffer + s->row, LINE_SIZE);
 				star_printed = 0;
 			}
 			else if(!star_printed)
@@ -193,12 +197,11 @@ int	ft_hexdump_files(int ac, char **av, t_stream *s, int mode)
 	total_err = 0;
 	while (s->index < ac)
 	{
-
 		total_err += ft_hexdump_file(av, s, mode);
 		s->index++;	
 	}	
 	if (s->cursor % LINE_SIZE != 0)
-		ft_print_line(s->buffer, s->row, mode);
+		ft_print_line(s->buffer, s->row, mode, s->cursor % LINE_SIZE);
 	if (s->row > 0)
 	{
 		ft_print_int_as_hex(s->row + (s->cursor % LINE_SIZE), mode);
