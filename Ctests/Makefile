@@ -24,6 +24,9 @@ main07: c07_main.c
 main08: c08_main.c
 	gcc -Wall -Wextra -Werror -o main08 c08_main.c
 
+main11: c11_main.c
+	gcc -Wall -Wextra -Werror -o main11 c11_main.c
+
 sort_params: ../C06/ex03/ft_sort_params.c
 	gcc -Wall -Wextra -Werror -o sort_params ../C06/ex03/ft_sort_params.c
 
