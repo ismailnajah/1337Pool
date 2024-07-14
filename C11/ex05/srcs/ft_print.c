@@ -6,10 +6,10 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 08:19:36 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/14 10:32:01 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/14 15:05:07 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_do_op.h"
+#include "../includes/ft_do_op.h"
 
 void	ft_putnbr(int nb)
 {

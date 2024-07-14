@@ -6,11 +6,10 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:19:23 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/14 10:40:29 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/14 15:05:17 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "ft_do_op.h"
+#include "../includes/ft_do_op.h"
 
 int	add(int a, int b)
 {

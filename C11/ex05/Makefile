@@ -6,7 +6,7 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/14 09:58:08 by inajah            #+#    #+#              #
-#    Updated: 2024/07/14 11:15:12 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/14 15:06:45 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,20 @@ CFLAGS = -Wall -Wextra -Werror
 CC = cc
 
 SRC = main.c ft_op.c ft_atoi.c ft_print.c
-INCLUDE = .
+S_DIR = srcs
+INCLUDE = includes
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 	
-$(NAME): $(OBJ)	
-	@$(CC) $(CFLAGS) -I $(INCLUDE) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ:%=$(S_DIR)/%)	
+	@$(CC) $(CFLAGS) -I $(INCLUDE) $^ -o $(NAME)
 
-$(OBJ): $(SRC)
-	@$(CC) $(CFLAGS) -I $(INCLUDE) -c $^
+$(S_DIR)/%.o: $(S_DIR)/%.c
+	@$(CC) $(CFLAGS) -I $(INCLUDE) -c $^ -o $@
 
 clean:
-	@/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ:%=$(S_DIR)/%)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
