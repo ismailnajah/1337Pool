@@ -61,7 +61,7 @@ int main()
 
 
 	ft_putstr("\n--- ex04 ---\n");
-	int tab[] = {10 , 9, 8, 6, 5};
+	int tab[] = {10 , 9, 1, 6, 5};
 	show(ft_is_sort(tab, 5, &ascending));
 	show(ft_is_sort(tab, 5, &descending));
 
