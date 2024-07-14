@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_push_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 15:19:34 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/14 15:25:38 by inajah           ###   ########.fr       */
+/*   Created: 2024/07/14 15:26:52 by inajah            #+#    #+#             */
+/*   Updated: 2024/07/14 15:43:39 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
+#include <stdlib.h>
+#include "ft_list.h"
 
-struct s_list
+void	ft_list_push_front(t_list **begin_list, void *data)
 {
-	void			*data;
-	struct s_list	*next;
-};
+	t_list	*node;
 
-typedef struct s_list	t_list;
-#endif
+	node = malloc(sizeof(struct s_list));
+	if (!node)
+		return ;
+	node->data = data;
+	node->next = *begin_list;
+	*begin_list = node;
+}

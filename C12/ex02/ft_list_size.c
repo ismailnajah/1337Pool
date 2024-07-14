@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 15:19:34 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/14 15:25:38 by inajah           ###   ########.fr       */
+/*   Created: 2024/07/14 15:44:09 by inajah            #+#    #+#             */
+/*   Updated: 2024/07/14 15:50:13 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
+#include "ft_list.h"
 
-struct s_list
+int	ft_list_size(t_list *begin_list)
 {
-	void			*data;
-	struct s_list	*next;
-};
+	t_list	*node;
+	int		size;
 
-typedef struct s_list	t_list;
-#endif
+	size = 0;
+	node = begin_list;
+	while (node)
+	{
+		size++;
+		node = node->next;
+	}
+	return (size);
+}
