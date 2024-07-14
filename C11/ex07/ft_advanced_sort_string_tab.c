@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_string_tab.c                               :+:      :+:    :+:   */
+/*   ft_advanced_sort_string_tab.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 10:43:21 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/14 10:56:55 by inajah           ###   ########.fr       */
+/*   Created: 2024/07/14 10:57:16 by inajah            #+#    #+#             */
+/*   Updated: 2024/07/14 11:02:17 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
-
-void	ft_sort_string_tab(char **tab)
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
 {
 	int		swaps;
 	char	*temp;
@@ -37,7 +23,7 @@ void	ft_sort_string_tab(char **tab)
 		i = 0;
 		while (tab[i + 1])
 		{
-			if (ft_strcmp(tab[i], tab[i + 1]) > 0)
+			if ((*cmp)(tab[i], tab[i + 1]) > 0)
 			{
 				temp = tab[i];
 				tab[i] = tab[i + 1];

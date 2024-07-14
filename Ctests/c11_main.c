@@ -4,6 +4,7 @@
 #include "../C11/ex03/ft_count_if.c"
 #include "../C11/ex04/ft_is_sort.c"
 #include "../C11/ex06/ft_sort_string_tab.c"
+#include "../C11/ex07/ft_advanced_sort_string_tab.c"
 
 #include "../C07/ex02/ft_ultimate_range.c"
 #include "../C04/ex02/ft_putnbr.c"
@@ -13,6 +14,9 @@
 #include "../C02/ex03/ft_str_is_numeric.c"
 #include "../C02/ex04/ft_str_is_lowercase.c"
 #include "../C02/ex05/ft_str_is_uppercase.c"
+
+#include <string.h>
+
 
 void show(int n)
 {
@@ -63,7 +67,7 @@ int main()
 
 
 	ft_putstr("\n--- ex06 ---\n");
-	ft_sort_string_tab(words_list);
+	ft_advanced_sort_string_tab(words_list, &ft_strcmp);
 	for(int i=0; words_list[i]; i++)
 	{
 		ft_putstr(words_list[i]);
