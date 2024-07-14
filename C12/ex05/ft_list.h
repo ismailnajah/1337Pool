@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_last.c                                     :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 15:50:45 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/14 15:57:52 by inajah           ###   ########.fr       */
+/*   Created: 2024/07/14 15:19:34 by inajah            #+#    #+#             */
+/*   Updated: 2024/07/14 15:25:38 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-t_list	*ft_list_last(t_list *begin_list)
+struct s_list
 {
-	t_list	*node;
+	void			*data;
+	struct s_list	*next;
+};
 
-	node = begin_list;
-	while (node->next)
-		node = node->next;
-	return (node);
-}
+typedef struct s_list	t_list;
+#endif
