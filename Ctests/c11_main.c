@@ -3,6 +3,7 @@
 #include "../C11/ex02/ft_any.c"
 #include "../C11/ex03/ft_count_if.c"
 #include "../C11/ex04/ft_is_sort.c"
+#include "../C11/ex06/ft_sort_string_tab.c"
 
 #include "../C07/ex02/ft_ultimate_range.c"
 #include "../C04/ex02/ft_putnbr.c"
@@ -43,7 +44,7 @@ int main()
 	
 	
 	ft_putstr("\n--- ex02 ---\n");
-	char *str = "This is a 1351 for 1337 students";
+	char *str = "z y c b a f x t";
 	int word_count = 7;
 	char **words_list = ft_split(str, " ");
 	show(ft_any(words_list, &ft_str_is_numeric));
@@ -60,6 +61,14 @@ int main()
 	show(ft_is_sort(tab, 5, &ascending));
 	show(ft_is_sort(tab, 5, &descending));
 
+
+	ft_putstr("\n--- ex06 ---\n");
+	ft_sort_string_tab(words_list);
+	for(int i=0; words_list[i]; i++)
+	{
+		ft_putstr(words_list[i]);
+		ft_putstr(" ");
+	}
 	free(range);
 	free(power_range);
 	for(int i=0; words_list[i]; i++)
