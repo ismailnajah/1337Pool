@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:48:44 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/13 20:23:13 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/14 11:44:15 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ int	ft_hexdump_error(char *prog_name, char *path, int err)
 		ft_error(path);
 		ft_error(": ");
 		ft_error(strerror(err));
-		ft_error("\n");
-		ft_error(basename(prog_name));
-		ft_error(": ");
-		ft_error(path);
-		ft_error(": ");
-		ft_error(strerror(EBADF));
 		ft_error("\n");
 	}
 	else
@@ -115,6 +109,10 @@ int	ft_hexdump_files(int ac, char **av, t_stream *s, int mode)
 	{
 		ft_print_int_as_hex(s->row + (s->cursor % LINE_SIZE), mode);
 		ft_putchar('\n');
+	}
+	if (s->cursor == 0 && s->row == 0)
+	{
+		ft_hexdump_error(av[0], av[ac - 1], EBADF);
 	}
 	return (total_err);
 }

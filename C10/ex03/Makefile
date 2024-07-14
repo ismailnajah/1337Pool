@@ -6,7 +6,7 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/09 17:12:25 by inajah            #+#    #+#              #
-#    Updated: 2024/07/13 20:25:52 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/14 11:36:05 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,16 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -I $(HEADERS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -I $(HEADERS) -o $(NAME)
+
+$(OBJ): $(SRC)
+	@$(CC) $(CFLAGS) -I $(HEADERS) -c $^
 
 clean:
-	rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 
