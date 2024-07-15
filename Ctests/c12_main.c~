@@ -12,7 +12,6 @@
 #include "../C12/ex09/ft_list_foreach.c"
 #include "../C12/ex10/ft_list_foreach_if.c"
 #include "../C12/ex12/ft_list_remove_if.c"
-#include "../C12/ex13/ft_list_merge.c"
 
 #include "../C09/ex02/ft_split.c"
 
@@ -70,28 +69,6 @@ void ft_abs(void *data)
 		*n *= -1;
 }
 
-int has_word(char *str, char *needle)
-{
-	int i = 0;
-
-	while (str[i])
-	{
-		int j = 0;
-		if (str[i] != needle[j])
-			i++;
-		else
-		{
-			while (str[i + j] == needle[j] && needle[j])
-				j++;
-			if (!needle[j])
-				return (0);
-			i += j;
-		}
-
-	}
-	return (1);
-}
-
 int main()
 {
 	t_list *list = NULL;
@@ -113,7 +90,7 @@ int main()
 
 	printf("last elem: %d\n", *((int*)ft_list_last(list)->data));
 	
-	char *str = "hello how ore you doing";
+	char *str = "hello how are you doing";
 	char **words_list = ft_split(str, " ");
 	int i = 0;
 	while (words_list[i])
@@ -124,9 +101,9 @@ int main()
 
 	//ex07
 	int index = ft_list_size(list) + 12;
-	t_list *elem = ft_list_at(list, index);
-	if (elem)
-		printf("\nelement at index %d is: %d\n", index, *((int*)elem->data));
+	t_list *node = ft_list_at(list, index);
+	if (node)
+		printf("\nelement at index %d is: %d\n", index, *((int*)node->data));
 
 	//ex8
 	printf("\nreverse the list:\n");
@@ -139,7 +116,7 @@ int main()
 
 	//ex10 : ft_list_foreach_if
 	printf("\nft_list_foreach_if: \n");
-	char *data_ref = "are";
+	char *data_ref = "you";
 	ft_list_foreach_if(strs_llist, &upper, data_ref, &strcmp);
 	ft_list_foreach(strs_llist, &ft_putstr);
 
@@ -152,34 +129,11 @@ int main()
 	//ex12 remove if
 	int target = 0;
 	printf("\ntesting ft_list_remove_if: removing %d\n", target);
-	ft_list_remove_if(&list, &target, &less, &free);
-	ft_list_foreach(list, &ft_putint);
-	
-	char *word = "o";
-	ft_list_remove_if(&strs_llist, word, &has_word, &free);
-	printf("\ntesting ft_list_remove_if: removing any word having \"%s\"\n", word);
-	ft_list_foreach(strs_llist, &ft_putstr);
-
-
-
-	//ex13 merging two lists;
-	t_list *list2 = NULL;
-	ft_list_push_front(&list2, node(4242));
-	ft_list_push_front(&list2, node(6));
-
-	printf("\ntesting ft_list_merge:\nlist1: ");
-	ft_list_foreach(list, &ft_putint);
-	printf("\nlist2: ");
-	ft_list_foreach(list2, &ft_putint);
-	printf("\n## merged: ");
-	ft_list_merge(&list, list2);
+	ft_list_remove_if(&list, &target, &great, &free);
 	ft_list_foreach(list, &ft_putint);
 
 
-
-
-
-	printf("\n## free the lists ##\n");
+	printf("\n## free the list ##\n");
 	ft_list_clear(list, &free);
 	ft_list_clear(strs_llist, &free);
 	ft_list_clear(NULL, &free);
