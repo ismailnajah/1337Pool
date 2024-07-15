@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_foreach_if.c                               :+:      :+:    :+:   */
+/*   ft_list_find.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 10:58:44 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/15 11:31:11 by inajah           ###   ########.fr       */
+/*   Created: 2024/07/15 11:31:42 by inajah            #+#    #+#             */
+/*   Updated: 2024/07/15 11:35:17 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	ft_list_foreach_if(t_list *begin_list, void (*f)(void *), void
-		*data_ref, int (*cmp)())
+t_list	*ft_list_fine(t_list *begin_list, void *data_ref, int (*cmp)())
 {
 	t_list	*node;
 
@@ -21,7 +20,8 @@ void	ft_list_foreach_if(t_list *begin_list, void (*f)(void *), void
 	while (node)
 	{
 		if ((*cmp)(node->data, data_ref) == 0)
-			(*f)(node->data);
+			break ;
 		node = node->next;
 	}
+	return (node);
 }

@@ -11,6 +11,7 @@
 #include "../C12/ex08/ft_list_reverse.c"
 #include "../C12/ex09/ft_list_foreach.c"
 #include "../C12/ex10/ft_list_foreach_if.c"
+#include "../C12/ex12/ft_list_remove_if.c"
 
 #include "../C09/ex02/ft_split.c"
 
@@ -49,6 +50,16 @@ void upper(void *data)
 int cmp(int *a, int *b)
 {
 	return (*a - *b);
+}
+
+int less(int *a, int *b)
+{
+	return *a <= *b ? 0 : 1;
+}
+
+int great(int *a, int *b)
+{
+	return *a >= *b ? 0 : 1;
 }
 
 void ft_abs(void *data)
@@ -104,15 +115,23 @@ int main()
 
 
 	//ex10 : ft_list_foreach_if
-	printf("\nft_list_foreach_if: ");
+	printf("\nft_list_foreach_if: \n");
 	char *data_ref = "you";
 	ft_list_foreach_if(strs_llist, &upper, data_ref, &strcmp);
 	ft_list_foreach(strs_llist, &ft_putstr);
 
 	int nb = -15;
 	ft_list_foreach_if(list, &ft_abs, &nb, &cmp);
-	printf("\n");
+	printf("\n--------------------\n");
 	ft_list_foreach(list, &ft_putint);
+
+
+	//ex12 remove if
+	int target = 1;
+	printf("\ntesting ft_list_remove_if: removing %d\n", target);
+	ft_list_remove_if(&list, &target, &great, &free);
+	ft_list_foreach(list, &ft_putint);
+
 
 	printf("\n## free the list ##\n");
 	ft_list_clear(list, &free);
