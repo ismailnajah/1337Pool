@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 13:56:32 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/15 17:21:34 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/15 20:19:24 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -14,18 +14,18 @@
 
 void	ft_swap(t_list **begin_list, t_list *prev, t_list *curr, t_list *next)
 {
-		if (!prev)
-		{
-			curr->next = next->next;
-			next->next = curr;
-			*begin_list = next;
-		}
-		else
-		{
-			prev->next = next;
-			curr->next = next->next;
-			next->next = curr;
-		}
+	if (!prev)
+	{
+		curr->next = next->next;
+		next->next = curr;
+		*begin_list = next;
+	}
+	else
+	{
+		prev->next = next;
+		curr->next = next->next;
+		next->next = curr;
+	}
 }
 
 int	_ft_list_sort(t_list **begin_list, int (*cmp)())
@@ -58,9 +58,9 @@ int	_ft_list_sort(t_list **begin_list, int (*cmp)())
 
 void	ft_list_sort(t_list **begin_list, int (*cmp)())
 {
-	int swaps;
+	int	swaps;
 
-	if(!(*begin_list))
+	if (!(*begin_list))
 		return ;
 	swaps = 1;
 	while (swaps)
