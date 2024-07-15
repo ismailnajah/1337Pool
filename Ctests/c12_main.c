@@ -13,6 +13,7 @@
 #include "../C12/ex10/ft_list_foreach_if.c"
 #include "../C12/ex12/ft_list_remove_if.c"
 #include "../C12/ex13/ft_list_merge.c"
+#include "../C12/ex14/ft_list_sort.c"
 
 #include "../C09/ex02/ft_split.c"
 
@@ -102,8 +103,7 @@ int main()
 	ft_list_push_front(&list, node(10));
 	ft_list_push_front(&list, node(-15));
 	ft_list_push_front(&list, node(2));
-	ft_list_push_front(&list, node(5));
-	
+	ft_list_push_front(&list, node(5));	
 	ft_list_push_back(&list, node(99));
 
 	//print int list
@@ -174,9 +174,24 @@ int main()
 	printf("\n## merged: ");
 	ft_list_merge(&list, list2);
 	ft_list_foreach(list, &ft_putint);
+	printf("\n----------\n");
 
+	//ex14 sorting linked list
+	t_list *order = NULL;
 
+	ft_list_push_back(&order, node(3));
+	ft_list_push_front(&order, node(2));	
+	ft_list_push_front(&order, node(5));	
+	ft_list_push_front(&order, node(0));	
+	ft_list_push_front(&order, node(1));	
 
+	
+	printf("\ntesting ft_list_sort\n");
+	printf("befor: ");
+	ft_list_foreach(list, &ft_putint);
+	printf("\nafter: ");
+	ft_list_sort(&list, &cmp);
+	ft_list_foreach(list, &ft_putint);
 
 
 	printf("\n## free the lists ##\n");
