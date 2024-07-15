@@ -15,6 +15,7 @@
 #include "../C12/ex13/ft_list_merge.c"
 #include "../C12/ex14/ft_list_sort.c"
 #include "../C12/ex15/ft_list_reverse_fun.c"
+#include "../C12/ex16/ft_sorted_list_insert.c"
 
 #include "../C09/ex02/ft_split.c"
 
@@ -186,7 +187,13 @@ int main()
 	ft_list_foreach(list, &ft_putint);
 
 	printf("\ntesting ft_list_reverse_fun\n");
-	ft_list_reverse_fun(NULL);
+	ft_list_reverse_fun(list);
+	ft_list_foreach(list, &ft_putint);
+
+	printf("\ntesting ft_sorted_list_insert\n");
+	ft_list_reverse_fun(list);
+	nb = 10000000;
+	ft_sorted_list_insert(&list, node(nb), &cmp);
 	ft_list_foreach(list, &ft_putint);
 
 	printf("\n## free the lists ##\n");
