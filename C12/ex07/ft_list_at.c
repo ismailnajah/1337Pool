@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
+/*   ft_list_at.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 16:35:39 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/15 08:37:48 by inajah           ###   ########.fr       */
+/*   Created: 2024/07/15 09:59:13 by inajah            #+#    #+#             */
+/*   Updated: 2024/07/15 10:10:02 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
+#include <stdlib.h>
 
-t_list	*ft_list_push_strs(int size, char **strs)
+t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
 {
-	int		i;
-	t_list	*head;
-	t_list	*node;
+	unsigned int	i;
+	t_list			*node;
 
 	i = 0;
-	head = NULL;
-	while (i < size)
+	node = begin_list;
+	while (i < nbr)
 	{
-		node = malloc(sizeof(struct s_list));
-		if (!node)
-			return (head);
-		node->data = strs[i];
-		node->next = head;
-		head = node;
+		if (node)
+			node = node->next;
+		else
+			return (NULL);
 		i++;
 	}
-	return (head);
+	return (node);
 }

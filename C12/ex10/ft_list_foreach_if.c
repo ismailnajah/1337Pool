@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
+/*   ft_list_foreach_if.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 16:35:39 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/15 08:37:48 by inajah           ###   ########.fr       */
+/*   Created: 2024/07/15 10:58:44 by inajah            #+#    #+#             */
+/*   Updated: 2024/07/15 11:15:29 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_list	*ft_list_push_strs(int size, char **strs)
+void	ft_list_foreach_if(t_list *begin_list, void (*f)(void *), void *data_ref, int (*cmp)())
 {
-	int		i;
-	t_list	*head;
 	t_list	*node;
 
-	i = 0;
-	head = NULL;
-	while (i < size)
+	node = begin_list;
+	while (node)
 	{
-		node = malloc(sizeof(struct s_list));
-		if (!node)
-			return (head);
-		node->data = strs[i];
-		node->next = head;
-		head = node;
-		i++;
+		if ((*cmp)(node->data, data_ref) == 0)
+			(*f)(node->data);
+		node = node->next;
 	}
-	return (head);
 }
