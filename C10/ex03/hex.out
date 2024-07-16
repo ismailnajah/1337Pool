@@ -1,0 +1,5 @@
+hexdump: test/file2: Permission denied
+00000000  41 41 41 41 41 41 41 41  41 41 41 41 41 41 41 41  |AAAAAAAAAAAAAAAA|
+*
+00000030  41 41                                             |AA|
+00000032
