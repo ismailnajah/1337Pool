@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:14:53 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/11 11:16:49 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/16 17:15:16 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ void	ft_print_buffer(char *buffer, t_file meta, int nbytes, int nbfiles)
 	offset = meta.len - nbytes;
 	if (offset < 0)
 		offset = 0;
-	ft_putstr(buffer + offset);
+//	ft_putstr(buffer + offset);
+	write(STDOUT, buffer + offset, meta.len - offset);	
 	counter++;
 }
 

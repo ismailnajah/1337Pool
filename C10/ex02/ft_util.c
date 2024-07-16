@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:18:31 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/11 10:54:53 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/16 17:15:30 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ int	ft_read_file(char *path, char *buffer, int *file_len)
 			(*file_len)++;
 		}
 	}
-	buffer[*file_len] = '\0';
+//	buffer[*file_len] = '\0';
 	return (0);
 }
