@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
+/*   btree_insert_data.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 16:35:39 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/16 15:03:32 by inajah           ###   ########.fr       */
+/*   Created: 2024/07/16 14:44:37 by inajah            #+#    #+#             */
+/*   Updated: 2024/07/16 14:56:00 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_btree.h"
 
-t_list	*ft_list_push_strs(int size, char **strs)
+void	btree_insert_data(t_btree **root, void *item, int (*cmpf)(void *, void *))
 {
-	int		i;
-	t_list	*head;
-	t_list	*node;
+	t_btree	*node;
 
-	i = 0;
-	head = NULL;
-	while (i < size)
+	if (!(*root))
 	{
-		node = ft_create_elem(strs[i]);
-		node->next = head;
-		head = node;
-		i++;
+		*root = btree_create_node(item);
+		return ;
 	}
-	return (head);
+	if ((*cmpf)((*root)->item, item) <= 0)
+		btree_insert_data(&(*root)->right, item, cmpf);
+	else
+		btree_insert_data(&(*root)->left, item, cmpf);
 }

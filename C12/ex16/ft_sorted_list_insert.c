@@ -6,23 +6,11 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 20:21:11 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/15 21:12:22 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/16 15:05:21 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
-
-t_list	*ft_elem(void *data)
-{
-	t_list	*node;
-
-	node = malloc(sizeof(struct s_list));
-	if (!node)
-		return (NULL);
-	node->data = data;
-	node->next = NULL;
-	return (node);
-}
 
 void	ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)())
 {
@@ -30,7 +18,7 @@ void	ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)())
 	t_list	*prev;
 	t_list	*elem;
 
-	elem = ft_elem(data);
+	elem = ft_create_elem(data);
 	node = *begin_list;
 	if (!node)
 	{

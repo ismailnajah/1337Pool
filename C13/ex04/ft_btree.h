@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
+/*   ft_btree.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 16:35:39 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/16 15:03:32 by inajah           ###   ########.fr       */
+/*   Created: 2024/07/16 10:45:40 by inajah            #+#    #+#             */
+/*   Updated: 2024/07/16 10:55:03 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#ifndef FT_BTREE_H
+# define FT_BTREE_H
 
-t_list	*ft_list_push_strs(int size, char **strs)
+struct s_btree
 {
-	int		i;
-	t_list	*head;
-	t_list	*node;
-
-	i = 0;
-	head = NULL;
-	while (i < size)
-	{
-		node = ft_create_elem(strs[i]);
-		node->next = head;
-		head = node;
-		i++;
-	}
-	return (head);
-}
+	void			*item;
+	struct s_btree	*left;
+	struct s_btree	*right;
+};
+typedef struct s_btree	t_btree;
+#endif

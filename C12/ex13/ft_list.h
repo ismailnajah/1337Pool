@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:19:34 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/14 15:25:38 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:57:30 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ struct s_list
 };
 
 typedef struct s_list	t_list;
+t_list	*ft_create_elem(void *data);
 #endif
