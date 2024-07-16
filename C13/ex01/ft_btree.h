@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:45:40 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/16 10:55:03 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/16 15:11:09 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,6 @@ struct s_btree
 	struct s_btree	*right;
 };
 typedef struct s_btree	t_btree;
+
+t_btree	*btree_create_node(void *item);
 #endif

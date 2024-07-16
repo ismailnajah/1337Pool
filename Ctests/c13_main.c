@@ -4,8 +4,11 @@
 #include "../C13/ex01/btree_apply_prefix.c"
 #include "../C13/ex02/btree_apply_infix.c"
 #include "../C13/ex03/btree_apply_suffix.c"
+#include "../C13/ex04/btree_insert_data.c"
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 typedef struct s_queue
 {
@@ -100,8 +103,15 @@ void ft_print_btree(t_btree *root)
 	ft_print_btree(root->right);
 }
 
+int cmp(void *a, void *b)
+{
+	return *((int*)a) - *((int*)b);
+}
+
 int main()
 {
+	srand(time(NULL));
+
 	t_btree *root = create_tree(6);
 	ft_print_btree(root);
 	printf("---------------------------\n");
@@ -117,8 +127,12 @@ int main()
 	btree_apply_suffix(root, &ft_putint);
 	printf("\n");
 
+	//ex04 testing btree_insert_data
+	t_btree *ordered = NULL;
 
+	for(int i = 0; i < 6; i++)
+		btree_insert_data(&ordered, item(10 + rand() % 100), &cmp);
 
-	//ft_print_btree(root);
+	ft_print_btree(ordered);
 	return 0;
 }
