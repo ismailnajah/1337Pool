@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 19:52:09 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/17 20:47:55 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/17 20:56:05 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ int	read_from_input(t_map *map, t_point solution_pos)
 	return (0);
 }
 
+void	ft_init_point(t_point *point)
+{
+	point->x = 0;
+	point->y = 0;
+}
+
 int	main(int argc, char *argv[])
 {
 	int		i;
@@ -46,8 +52,7 @@ int	main(int argc, char *argv[])
 	t_map	map;
 	t_point	solution_pos;
 
-	solution_pos.x = 0;
-	solution_pos.y = 0;
+	ft_init_point(&solution_pos);
 	if (argc == 1)
 		return (read_from_input(&map, solution_pos));
 	i = 1;

@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:19:37 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/17 20:45:07 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/17 20:56:22 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	find_biggest_square(t_map *map, t_point *max_pos)
 {
 	int	**dp;
 	int	max;
-	
+
 	dp = allocate_dp_matrix(map->metadata.size + 1);
 	max = fill_dp_matrix(dp, map, max_pos);
 	free_dp_matrix(dp, map->metadata.size + 1);
