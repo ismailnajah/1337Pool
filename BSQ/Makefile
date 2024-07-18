@@ -6,7 +6,7 @@
 #    By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/17 18:16:59 by inajah            #+#    #+#              #
-#    Updated: 2024/07/18 09:32:15 by inajah           ###   ########.fr        #
+#    Updated: 2024/07/18 11:38:37 by inajah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,4 +33,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all fclean clean re 
+.PHONY: all fclean clean re

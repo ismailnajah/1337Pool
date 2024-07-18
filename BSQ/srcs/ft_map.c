@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 19:56:09 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/18 09:04:38 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/18 11:34:19 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ int	allocate_and_fill_map(t_map *map, int fd)
 			ft_free_and_close(map, pos.y, fd);
 			return (0);
 		}
+	}
+	if (pos.y != map->metadata.size - 1)
+	{
+		ft_free_and_close(map, pos.y, fd);
+		return (0);
 	}
 	return (1);
 }

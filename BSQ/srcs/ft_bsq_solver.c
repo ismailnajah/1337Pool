@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:19:37 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/17 20:56:22 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/18 11:11:04 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	fill_dp_matrix(int **dp, t_map *map, t_point *max_pos)
 		cell.x = 1;
 		while (cell.x < map->metadata.size + 1)
 		{
-			if (map->data[cell.y - 1][cell.x - 1] == map->metadata.obstacle)
+			if ((map->data[cell.y - 1][cell.x - 1]) == map->metadata.obstacle)
 				dp[cell.y][cell.x] = 0;
 			else
 				update_cell(dp, cell, &max, max_pos);
