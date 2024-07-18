@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 19:41:36 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/18 08:53:10 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/18 09:27:36 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_atoi(char *str)
 
 int	print_error(int return_code)
 {
-	write(2, "Error\n", 6);
+	write(2, "map error\n", 10);
 	return (return_code);
 }
 
