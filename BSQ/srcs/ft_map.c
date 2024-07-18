@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 19:56:09 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/17 20:48:45 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/18 09:04:38 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	allocate_and_fill_map(t_map *map, int fd)
 	{
 		if (!insert_character(map, &pos, char_buffer))
 		{
-			write(1, &char_buffer, 4);
 			ft_free_and_close(map, pos.y, fd);
 			return (0);
 		}

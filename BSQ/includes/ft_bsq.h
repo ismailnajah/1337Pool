@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:18:00 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/17 20:25:06 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/18 08:54:59 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_point
 
 int				min(int a, int b);
 int				ft_atoi(char *str);
-void			print_error(void);
+int				print_error(int return_code);
 int				open_file(char *path);
 int				ft_is_printable(char c);
 

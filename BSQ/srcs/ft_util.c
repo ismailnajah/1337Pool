@@ -6,7 +6,7 @@
 /*   By: inajah <inajah@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 19:41:36 by inajah            #+#    #+#             */
-/*   Updated: 2024/07/17 20:47:05 by inajah           ###   ########.fr       */
+/*   Updated: 2024/07/18 08:53:10 by inajah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ int	ft_atoi(char *str)
 	return (result);
 }
 
-void	print_error(void)
+int	print_error(int return_code)
 {
-	write(2, "Error\n", 7);
+	write(2, "Error\n", 6);
+	return (return_code);
 }
 
 int	ft_is_printable(char c)
