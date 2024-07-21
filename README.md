@@ -1,12 +1,6 @@
-# 1337 Pool 2024
-- Shell00 : Done!
-- Shell01 : Done!
-- C00 : Done!
-- C01 : Done!
-- C02 : Done!
-- C03 : Done!
-- C04 : Done!
-- C05 : Done!
-- C06 : Done!
-- C07 : Done!
-- C08 : In progress...
+# 1337 Pool June/July 2024
+
+this repo contains my solutions for the 1337 Pool June/July 2024.
+all the days have been solved and graded except: C10 C12 and C13.
+
+
